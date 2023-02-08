@@ -1,0 +1,54 @@
+---
+let tabs;
+let listClasses;
+
+if (Astro.url.pathname === '/feedbackPage' || Astro.url.pathname === '/feedbackPage.html') {
+    tabs = [
+    {name: 'Чат', id: 1, listItemClasses: 'site-section__table-tabs-item feedback-page__table-tabs-item', listItemBtnClasses: 'site-section__table-tabs-item-btn feedback-page__table-tabs-item-btn indicator-new'},
+    {name: 'Вопрос-ответ', id: 2, listItemClasses: 'site-section__table-tabs-item feedback-page__table-tabs-item', listItemBtnClasses: 'site-section__table-tabs-item-btn feedback-page__table-tabs-item-btn indicator-new'},
+]
+
+listClasses = 'site-section__table-tabs feedback-page__table-tabs'; 
+} 
+
+else if (Astro.url.pathname === '/settingsPage' || Astro.url.pathname === '/settingsPage.html') {
+    tabs = [
+    {name: 'Данные', id: 1, listItemClasses: 'site-section__table-tabs-item settings-page__table-tabs-item', listItemBtnClasses: 'site-section__table-tabs-item-btn settings-page__table-tabs-item-btn indicator-new'},
+    {name: 'Пароль', id: 2, listItemClasses: 'site-section__table-tabs-item settings-page__table-tabs-item', listItemBtnClasses: 'site-section__table-tabs-item-btn settings-page__table-tabs-item-btn indicator-new'},
+    {name: 'Прочие', id: 3, listItemClasses: 'site-section__table-tabs-item settings-page__table-tabs-item', listItemBtnClasses: 'site-section__table-tabs-item-btn settings-page__table-tabs-item-btn indicator-new'}
+]
+
+listClasses = 'site-section__table-tabs settings-page__table-tabs'; 
+} 
+
+else if (Astro.url.pathname === '/DocumentsPage' || Astro.url.pathname === '/DocumentsPage.html') {
+    tabs = [
+    {name: 'Документооборот', id: 1, listItemClasses: 'site-section__table-tabs-item documents-page__table-tabs-item', listItemBtnClasses: 'site-section__table-tabs-item-btn documents-page__table-tabs-item-btn'},
+    {name: 'Паспорта', id: 2, listItemClasses: 'site-section__table-tabs-item documents-page__table-tabs-item', listItemBtnClasses: 'site-section__table-tabs-item-btn documents-page__table-tabs-item-btn'},
+]
+
+listClasses = 'site-section__table-tabs documents-page__table-tabs'; 
+} 
+
+else if (Astro.url.pathname === '/companyData' || Astro.url.pathname === '/companyData.html') {
+    tabs = [
+    {name: 'Компания', id: 1, listItemClasses: 'site-section__table-tabs-item company-data-page__table-tabs-item', listItemBtnClasses: 'site-section__table-tabs-item-btn company-data-page__table-tabs-item-btn'},
+    {name: 'Грузополучатель', id: 2, listItemClasses: 'site-section__table-tabs-item company-data-page__table-tabs-item', listItemBtnClasses: 'site-section__table-tabs-item-btn company-data-page__table-tabs-item-btn'},
+    {name: 'Адреса', id: 3, listItemClasses: 'site-section__table-tabs-item company-data-page__table-tabs-item', listItemBtnClasses: 'site-section__table-tabs-item-btn company-data-page__table-tabs-item-btn'},
+]
+
+listClasses = 'site-section__table-tabs company-data-page__table-tabs'; 
+} 
+---
+
+<ul role="list" class={listClasses}>
+    {
+        tabs.map((tab)=>
+        <li class={tab.listItemClasses}>
+        <button type="button" class={tab.listItemBtnClasses} x-on:click={`table = ${tab.id}`} x-bind:class={`{'active': table === ${tab.id}}`}>
+            {tab.name}
+        </button>
+    </li>
+        )
+    }
+</ul>

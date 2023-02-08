@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EventsBoardTosts from "../components/eventsBoardPage/EventsBoardTosts.astro";
+import LastEventsTable from "../components/eventsBoardPage/LastEventsTable.astro";
+---
+<Layout title="страница лента событий">
+  <section class="site-section events-board-page__site-section" x-data="{table: 1 }">
+    <EventsBoardTosts></EventsBoardTosts>
+    <div class="site-section__body events-board-page__body">
+      <div class="events-board-page__body-wrapper">
+      <LastEventsTable></LastEventsTable>
+      </div>
+    </div>
+  </section>
+</Layout>

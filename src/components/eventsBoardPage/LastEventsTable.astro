@@ -1,0 +1,40 @@
+<div class="events-board-page__last-table-wrapper" x-data="{activeClass: true}">
+<div class="events-board-page__last-table-top">
+    <h1 class="site-section__title events-board-page__last-table-title">Последние события</h1>
+    <button type="button" class="events-board-page__last-table-read-as-mark-btn" x-on:click="activeClass = false">
+        Отметить все как прочитанные
+    </button>
+</div>
+<ul role="list" class="events-board-page__last-table-list">
+    <template x-for="i in 2">
+        <li class="events-board-page__last-table-list-item active" x-bind:class="{'active': activeClass === true}">
+            <div class="events-board-page__last-table-list-item-left">
+                <div class="events-board-page__last-table-list-item-indicator active" x-bind:class="{'active': activeClass === true}"></div>
+                <div class="events-board-page__last-table-list-item-info">
+                    <p class="events-board-page__last-table-list-item-title">Событие</p>
+                    <p class="events-board-page__last-table-list-item-text">Раздел или документ и номер</p>
+                </div>
+            </div>
+            <div class="events-board-page__last-table-list-item-right">
+                <time datetime="14:55" class="events-board-page__last-table-list-item-time">14:55</time>
+                <time datetime="2022.10.11" class="events-board-page__last-table-list-item-date"><span>11</span> <span>окт</span> <span>2022</span></time>
+            </div>
+        </li>
+    </template>
+    <template x-for="i in 4">
+        <li class="events-board-page__last-table-list-item">
+            <div class="events-board-page__last-table-list-item-left">
+                <div class="events-board-page__last-table-list-item-indicator"></div>
+                <div class="events-board-page__last-table-list-item-info">
+                    <p class="events-board-page__last-table-list-item-title">Событие</p>
+                    <p class="events-board-page__last-table-list-item-text">Раздел или документ и номер</p>
+                </div>
+            </div>
+            <div class="events-board-page__last-table-list-item-right">
+                <time datetime="14:55" class="events-board-page__last-table-list-item-time">14:55</time>
+                <time datetime="2022.10.11" class="events-board-page__last-table-list-item-date"><span>11</span> <span>окт</span> <span>2022</span></time>
+            </div>
+        </li>
+    </template>
+</ul>
+</div>

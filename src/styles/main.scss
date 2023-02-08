@@ -1,0 +1,129 @@
+@import "utils/functions";
+
+@import "utils/variables";
+
+@import "utils/mixins";
+
+@import "common/fonts";
+
+@import "common/global";
+
+// global components
+
+@import "components/header";
+
+@import "components/headerProfileDropdown";
+
+@import "components/headerEnterAccountDropdown";
+
+@import "components/footer";
+
+@import "components/footerMobileMenu";
+
+@import "components/footerProfileMenu";
+
+@import "components/footerOptionsDropdown";
+
+@import "components/accountEnterPopup";
+
+@import "components/asideNavMenu";
+
+@import "components/paymentRequirementsDropdown";
+
+@import "components/settingsOrderListPopup";
+
+@import "components/authRegPopup";
+
+@import "components/eventsBoardPopup";
+
+@import "components/pagination";
+
+@import "components/addNewFilterPopup";
+
+@import "components/filter";
+
+@import "components/searchForm";
+
+@import "components/chooseTransportCompanyDropdown";
+
+@import "components/paymentRequirementsDropdown";
+
+@import "components/paramsLists";
+
+@import "components/tableTabs";
+
+// pages + components
+
+@import "pages/eventsBoard";
+
+@import "components/eventsBoard/eventsBoardTosts";
+
+@import "components/eventsBoard/lastEventsTable";
+
+
+
+@import "pages/orders";
+
+@import "components/ordersPage/ordersTable";
+
+@import "components/ordersPage/editOrderPopup";
+
+
+@import "pages/documentsPage";
+
+@import "components/documentsPage/documentFlowTable";
+
+@import "components/documentsPage/documentFlowCardsList";
+
+@import "components/documentsPage/viewCardInfoAltPopup";
+
+@import "components/documentsPage/transferSectionsAltPopup";
+
+@import "components/documentsPage/editActionsAltPopup";
+
+@import "components/documentsPage/addPassportFolderAltPopup";
+
+@import "components/documentsPage/documentFlowAddFolderAltPopup";
+
+
+@import "pages/companyData";
+
+@import "components/companyDataPage/addConsigneeAltPopup";
+
+@import "components/companyDataPage/addAddressAltPopup";
+
+@import "components/companyDataPage/normalizeDataPopup";
+
+
+
+@import "pages/favoritesPage";
+
+@import "components/favoritesPage/calculateDeliveryAltPopup";
+
+@import "components/favoritesPage/createApplicationAltPopup";
+
+
+@import "pages/settingsPage";
+
+@import "pages/feedbackPage";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+---
+import EditOrderPopup from "./EditOrderPopup.astro";
+---
+
+<div class="site-section__table-wrapper orders__table-wrapper" x-data="{editOrderPopup: false}">
+    <nav class="site-section__table orders__table" x-data="{tables: [1,2,3,4,5,6,7,8,9,10]}">
+      <ul role="list" class="site-section__table-list site-section__table-caption-list orders__table-list orders__table-caption-list">
+        <li class="site-section__table-list-item site-section__table-caption-list-item orders__table-list-item orders__table-list-caption-item">
+          <button class="site-section__table-sort-btn site-section__table-data-sort-btn" type="button">
+            Дата
+            <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 13L4 16M4 16L7 13M4 16V4M16 14C16 15.1046 15.1046 16 14 16C12.8954 16 12 15.1046 12 14C12 12.8954 12.8954 12 14 12C15.1046 12 16 12.8954 16 14ZM16 14V17C16 17.5304 15.7893 18.0391 15.4142 18.4142C15.0391 18.7893 14.5304 19 14 19H12.5M14 1C14.5304 1 15.0391 1.21071 15.4142 1.58579C15.7893 1.96086 16 2.46957 16 3V6C16 6.53043 15.7893 7.03914 15.4142 7.41421C15.0391 7.78929 14.5304 8 14 8C13.4696 8 12.9609 7.78929 12.5858 7.41421C12.2107 7.03914 12 6.53043 12 6V3C12 2.46957 12.2107 1.96086 12.5858 1.58579C12.9609 1.21071 13.4696 1 14 1Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>                
+          </button>
+        </li>
+        <li class="site-section__table-list-item site-section__table-list-caption-item orders__table-list-item orders__table-list-caption-item">
+          <button class="site-section__table-sort-btn site-section__table-number-sort-btn" type="button">
+            Номер
+            <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 13L4 16M4 16L7 13M4 16V4M16 14C16 15.1046 15.1046 16 14 16C12.8954 16 12 15.1046 12 14C12 12.8954 12.8954 12 14 12C15.1046 12 16 12.8954 16 14ZM16 14V17C16 17.5304 15.7893 18.0391 15.4142 18.4142C15.0391 18.7893 14.5304 19 14 19H12.5M14 1C14.5304 1 15.0391 1.21071 15.4142 1.58579C15.7893 1.96086 16 2.46957 16 3V6C16 6.53043 15.7893 7.03914 15.4142 7.41421C15.0391 7.78929 14.5304 8 14 8C13.4696 8 12.9609 7.78929 12.5858 7.41421C12.2107 7.03914 12 6.53043 12 6V3C12 2.46957 12.2107 1.96086 12.5858 1.58579C12.9609 1.21071 13.4696 1 14 1Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>                
+          </button>
+        </li>
+        <li class="site-section__table-list-item site-section__table-list-caption-item orders__table-list-item orders__table-list-caption-item">
+          Товары
+        </li>
+        <li class="site-section__table-list-item site-section__table-list-caption-item orders__table-list-item orders__table-list-caption-item">
+          Адрес
+        </li>
+        <li class="site-section__table-list-item site-section__table-list-caption-item orders__table-list-item orders__table-list-item--desktop orders__table-list-caption-item">
+          Организация
+        </li>
+        <li class="site-section__table-list-item site-section__table-list-caption-item orders__table-list-item orders__table-list-caption-item">
+          Cтатус
+        </li>
+      </ul>
+      <template x-for="table in tables">
+      <ul role="list" class="site-section__table-list orders__table-list">
+        <li class="site-section__table-list-item orders__table-list-item" x-on:click="editOrderPopup = true">
+          12 окт 2022
+        </li>
+        <li class="site-section__table-list-item orders__table-list-item number" x-on:click="editOrderPopup = true">
+            123123123
+        </li>
+        <li class="site-section__table-list-item orders__table-list-item" x-on:click="editOrderPopup = true">
+          2
+        </li>
+        <li class="site-section__table-list-item orders__table-list-item" x-on:click="editOrderPopup = true">
+          <div class="orders__table-list-item-address desktop-hide">
+          <p>
+          Печальная обл.,
+          </p>
+          <p>
+            Тоскливый район
+            </p>
+        </div>
+        <p class="orders__table-list-item-address mobile-hide"> Печальная обл.,Тоскливый район</p>
+        </li>
+        <li class="site-section__table-list-item orders__table-list-item orders__table-list-item--org-link">
+          <a href="#" class="site-section__org-link">
+            Моя компания
+          </a>
+        </li>
+        <li class="site-section__table-list-item orders__table-list-item site-section__table-list-item--status-btn">
+          <button class="btn site-section__status-btn site-section__status-btn--cargo-in-way orders__status-btn" type="button">
+            Груз в пути
+          </button>
+       </li>
+       <li class="site-section__table-list-item orders__table-list-item mobile-hide">
+        <a href="#" class="btn btn--secondary orders__detail-btn-link">
+          Подробнее
+        </a>
+     </li>
+      </ul>
+    </template>
+    </nav>
+    <EditOrderPopup></EditOrderPopup>
+</div>

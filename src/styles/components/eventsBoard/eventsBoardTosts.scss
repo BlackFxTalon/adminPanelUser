@@ -1,0 +1,76 @@
+.events-board-page {
+
+    &__toast-list {
+        padding: 0;
+        padding-top: 30px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        gap: 20px;
+        overflow-x: auto;
+        white-space: nowrap;
+
+        @include media-extra-large() {
+            max-width: clampBuilder(1200, 1920, 920, 1642);
+        }
+    }
+
+    &__toast-list::-webkit-scrollbar {
+        display: none;
+    }
+
+    &__toast-list-item {
+        display: grid;
+        padding: 20px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18px;
+        color: var(--gray100);
+        border-radius: 4px;
+        min-width: 296px;
+        min-height: 144px;
+
+        @include media-extra-large() {
+            min-width: 304px;
+        }
+    }
+
+    &__toast-list-item.danger {
+        background-color: var(--danger);
+    }
+
+    &__toast-list-item.blue {
+        background-color: var(--blue);
+    }
+
+    &__toast-list-item.green {
+        background-color: var(--green);
+    }
+
+    &__toast-list-item-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    &__toast-list-item-bottom {
+        margin-top: auto;
+    }
+
+    &__toast-list-item-title {
+        max-width: 30ch;
+        white-space: normal;
+    }
+
+    &__toast-list-item-delete-btn {
+        max-width: 8px;
+        height: 8px;
+        margin-top: 5px;
+    }
+
+    &__toast-list-item-link {
+        color: currentColor;
+    }
+}

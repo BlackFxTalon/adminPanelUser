@@ -1,0 +1,63 @@
+<div class="alt-popup add-address-alt-popup" x-bind:class="{'active': addAddressAltPopup === true}" x-on:click.self="addAddressAltPopup = false"
+x-data="{
+    addressCity: '',
+    addressStreet: '',
+    addressHouse: '',
+    addressBlock: '',
+    addressName: '',
+}"
+>
+    <div class="alt-popup__content add-address-alt-popup__content">
+     <div class="add-address-alt-popup__top-row">
+        <p class="alt-popup__title add-address-alt-popup__title">Добавление адреса</p>
+        <button class="add-address-alt-popup__close-btn" type="button" x-on:click="addAddressAltPopup = false">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 1L1 13M1 1L13 13" stroke="#161C2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>                
+        </button>
+     </div>
+    <div class="alt-popup__body add-address-alt-popup__body">
+        <ul class="add-address-alt-popup__address-list" role="list">
+            <li class="add-address-alt-popup__address-list-item">
+              <div class="add-address-alt-popup__address-list-item-info">
+                  <label for="addressCity" class="add-address-alt-popup__address-list-item-title">
+                    Город:
+                  </label>
+                  <input class="add-address-alt-popup__address-list-item-input" type="text" name="addressCity" id="addressCity" placeholder="Введите ИНН или название компании" x-model="addressCity">
+              </div>
+            </li>
+            <li class="add-address-alt-popup__address-list-item">
+                <div class="add-address-alt-popup__address-list-item-info">
+                    <label for="addressStreet" class="add-address-alt-popup__address-list-item-title">
+                        Улица:
+                    </label>
+                    <input class="add-address-alt-popup__address-list-item-input" type="text" name="addressStreet" id="addressStreet" placeholder="Введите адрес получателя" x-model="addressStreet">
+                </div>
+              </li>
+            <li class="add-address-alt-popup__address-list-item  two-cols">
+              <div class="add-address-alt-popup__address-list-item-info">
+                  <label for="addressHouse" class="add-address-alt-popup__address-list-item-title">
+                    Дом:
+                  </label>
+                  <input class="add-address-alt-popup__address-list-item-input" type="text" name="addressHouse" id="addressHouse" x-model="addressHouse">
+              </div>
+              <div class="add-address-alt-popup__address-list-item-info">
+                  <label for="addressBlock" class="add-address-alt-popup__address-list-item-title">
+                    Строение:
+                  </label>
+                  <input class="add-address-alt-popup__address-list-item-input" type="text" name="addressBlock" id="addressBlock" x-model="addressBlock">
+              </div>
+            </li>
+            <li class="add-address-alt-popup__address-list-item">
+              <div class="add-address-alt-popup__address-list-item-info">
+                  <label for="addressName" class="add-address-alt-popup__address-list-item-title">
+                    Адрес:
+                  </label>
+                  <input class="add-address-alt-popup__address-list-item-input" type="text" name="addressName" id="addressName" placeholder="Введите название адреса, например, филиал" x-model="addressName">
+              </div>
+            </li>
+        </ul>
+        <button type="button" class="btn btn--primary add-address-alt-popup__save-btn" x-bind:class="{'disabled': addressCity.length === 0 && addressStreet.length === 0 && addressHouse.length === 0 && addressBlock.length === 0 && addressName.length === 0}" x-on:click="addressLists.push({name: addressCity,address: addressName}); addressCity = '';addressStreet = '';addressHouse = '';addressBlock = '';addressName = ''; addAddressAltPopup = false">Сохранить</button>
+    </div>
+</div>
+</div>

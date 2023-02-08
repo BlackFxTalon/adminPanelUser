@@ -1,0 +1,422 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TableTabs from "../components/TableTabs.astro";
+import AddConsigneeAltPopup from "../components/companyDataPage/addConsigneeAltPopup.astro";
+import AddAddressAltPopup from "../components/companyDataPage/AddAddressAltPopup.astro";
+import NormalizeDataPopup from "../components/companyDataPage/NormalizeDataPopup.astro";
+---
+<Layout title="страница Данные о Компании">
+    <section class="site-section company-data-page__site-section" x-data="{table: 1, addConsigneeAltPopup: false, addAddressAltPopup: false, normalizeDataPopup: false }">
+      <TableTabs></TableTabs>
+      <form action="#" method="post" class="company-data-page__form" x-data="{companyNameINN: '', companyINN: '', companyKPP: '', JurAddress: '', PostAddress: '', FIO: '', PassportSerialNumber: '', DateOfIssue: '', IssuedBy: '', companyDataPageDateTimePicker: '', toggleChangeSaveBtn: false, toggleInputsState: false}">
+      <p class="company-data-page__msg-toast" x-show="companyNameINN.length === 0 && companyINN.length === 0 && companyKPP.length === 0 && JurAddress.length === 0 && PostAddress.length === 0 && PassportSerialNumber.length === 0 && DateOfIssue.length === 0 && IssuedBy.length === 0">
+        Заполните данные о компании, чтобы получить доступ к разделам “Грузополучатель” и “Адреса”
+    </p>
+    <p class="company-data-page__normalize-data-toast">
+      <span>Данные о компании были изменены в реестре.</span>
+      <button type="button" class="company-data-page__normalize-data-btn" x-on:click="normalizeDataPopup = true">Актуализировать данные</button>
+  </p>
+      <div class="site-section__tab-wrapper company-data-page__tab-wrapper" x-show="table === 1">
+        <ul class="company-data-page__company-list company-tab" x-data="{tab: 'Legal entity/IP'}" role="list">
+          <li class="company-data-page__company-list-item company-tab">
+             <ul role="list" class="company-data-page__company-list-tabs">
+                <li class="company-data-page__company-list-tabs-item" x-bind:class="{'active': tab === 'Legal entity/IP'}" x-on:click="tab = 'Legal entity/IP'">
+                    Юр.лицо/ИП
+                </li>
+                <li class="company-data-page__company-list-tabs-item" x-bind:class="{'active': tab === 'Individual'}" x-on:click="tab = 'Individual'">
+                    Физ.лицо
+                </li>
+             </ul>
+          </li>
+          <li class="company-data-page__company-list-item company-tab" x-show="tab === 'Legal entity/IP'">
+            <div class="company-data-page__company-list-item-info">
+                <p class="company-data-page__company-list-item-title">
+                    Компания:
+                </p>
+                <input class="company-data-page__company-list-item-input" type="text" name="companyNameINN" id="companyNameINN" placeholder="Название компании или ИНН" x-model="companyNameINN" x-bind:class="{'disabled': toggleInputsState === false}">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item company-tab two-cols" x-show="tab === 'Legal entity/IP'">
+            <div class="company-data-page__company-list-item-info">
+                <p class="company-data-page__company-list-item-title">
+                    ИНН:
+                </p>
+                <input class="company-data-page__company-list-item-input" type="text" name="companyINN" id="companyINN" x-model="companyINN" x-bind:class="{'disabled': toggleInputsState === false}">
+            </div>
+            <div class="company-data-page__company-list-item-info">
+                <label for="companyKPP" class="company-data-page__company-list-item-title">
+                    КПП:
+                </label>
+                <input class="company-data-page__company-list-item-input" type="text" name="companyKPP" id="companyKPP" x-model="companyKPP" x-bind:class="{'disabled': toggleInputsState === false}">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item company-tab" x-show="tab === 'Legal entity/IP'">
+            <div class="company-data-page__company-list-item-info">
+                <p class="company-data-page__company-list-item-title">
+                    Юр. адрес:
+                </p>
+                <input class="company-data-page__company-list-item-input" type="text" name="JurAddress" id="JurAddress" placeholder="Укажите Юр.Адрес..." x-bind:class="{'disabled': toggleInputsState === false}" x-model="JurAddress">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item company-tab" x-show="tab === 'Legal entity/IP'">
+            <div class="company-data-page__company-list-item-info">
+                <p class="company-data-page__company-list-item-title">
+                    Поч. адрес:
+                </p>
+                <input class="company-data-page__company-list-item-input" type="text" name="PostAddress" id="PostAddress" placeholder="Укажите адрес..." x-bind:class="{'disabled': toggleInputsState === false}" x-model="PostAddress">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item company-tab" x-show="tab === 'Individual'">
+            <div class="company-data-page__company-list-item-info">
+                <p  class="company-data-page__company-list-item-title">
+                    ФИО:
+                </p>
+                <input class="company-data-page__company-list-item-input" type="text" name="FIO" id="FIO" placeholder="Название компании или ИНН" x-bind:class="{'disabled': toggleInputsState === false}" x-model="FIO">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item company-tab" x-show="tab === 'Individual'">
+            <div class="company-data-page__company-list-item-info">
+                <p class="company-data-page__company-list-item-title">
+                    Серия, № паспорта:
+                </p>
+                <input class="company-data-page__company-list-item-input" type="text" name="PassportSerialNumber" id="PassportSerialNumber" x-bind:class="{'disabled': toggleInputsState === false}" x-model="PassportSerialNumber">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item company-tab" x-show="tab === 'Individual'">
+            <div class="company-data-page__company-list-item-info">
+                <p class="company-data-page__company-list-item-title">
+                    Дата выдачи:
+                </p>
+                <input class="company-data-page__company-list-item-input" type="text" name="DateOfIssue" id="DateOfIssue" x-bind:class="{'disabled': toggleInputsState === false}" x-model="DateOfIssue">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item company-tab" x-show="tab === 'Individual'">
+            <div class="company-data-page__company-list-item-info">
+                <p class="company-data-page__company-list-item-title">
+                    Кем выдан:
+                </p>
+                <input class="company-data-page__company-list-item-input" type="text" name="IssuedBy" id="IssuedBy" x-bind:class="{'disabled': toggleInputsState === false}" x-model="IssuedBy">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item company-tab" x-show="tab === 'Individual'">
+            <div class="company-data-page__company-list-item-info">
+                <p class="company-data-page__company-list-item-title">
+                    Дата рождения:
+                </p>
+                <div class="company-data-page__datepicker-wrapper">
+                  <button type="button" class="company-data-page__datepicker-btn">
+                    <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M13 1V5M5 1V5M1 9H17M3 3H15C16.1046 3 17 3.89543 17 5V17C17 18.1046 16.1046 19 15 19H3C1.89543 19 1 18.1046 1 17V5C1 3.89543 1.89543 3 3 3ZM5 13H7V15H5V13Z" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>            
+                  </button>
+                  <input class="company-data-page__company-list-item-input company-data-page__input-date" id="companyDataPageDateTimePicker" x-bind:class="{'disabled': toggleInputsState === false}" placeholder="__.__.____" x-model="companyDataPageDateTimePicker">
+                </div>
+            </div>
+          </li>
+        </ul>
+        <button type="button" class="btn btn--primary company-data-page__change-btn" x-on:click="toggleChangeSaveBtn = true; toggleInputsState = true" x-bind:class="{'active': toggleChangeSaveBtn === false}">Изменить</button>
+        <button type="button" class="btn btn--primary company-data-page__save-btn" x-on:click="toggleChangeSaveBtn = false;toggleInputsState = false" x-bind:class="{'active': toggleChangeSaveBtn === true}">Сохранить</button>
+      </div>
+      <div class="site-section__tab-wrapper company-data-page__tab-wrapper" x-show="table === 2" x-data="{consigneeLists:[]}">
+        <button type="button" class="btn btn--primary company-data-page__add-consignee-btn" x-show="companyNameINN.length > 0 && companyINN.length > 0 && companyKPP.length > 0 && JurAddress.length > 0 && PostAddress.length > 0 && PassportSerialNumber.length > 0 && DateOfIssue.length > 0 && IssuedBy.length > 0" x-on:click="addConsigneeAltPopup = true">Добавить грузополучателя</button>
+        <div class="company-data-page__consignee-lists-wrapper" x-show="companyNameINN.length > 0 && companyINN.length > 0 && companyKPP.length > 0 && JurAddress.length > 0 && PostAddress.length > 0 && PassportSerialNumber.length > 0 && DateOfIssue.length > 0 && IssuedBy.length > 0">
+        <ul class="company-data-page__company-list" role="list" x-data="{toggleInput: false }">
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info radio-input">
+              <input type="radio" class="company-data-page__company-list-item-radio-input" name="consignee" id="ООО Тыры Пыры" checked>
+                <label for="ООО Тыры Пыры" class="company-data-page__company-list-item-title radio-input">
+                  ООО Тыры Пыры
+                </label>
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item consignee-tab two-cols">
+            <div class="company-data-page__company-list-item-info">
+                <label for="companyINN" class="company-data-page__company-list-item-title">
+                    ИНН:
+                </label>
+                <input class="company-data-page__company-list-item-input disabled" type="text" x-bind:class="{'disabled': toggleInput === false}">
+            </div>
+            <div class="company-data-page__company-list-item-info">
+                <label for="companyKPP" class="company-data-page__company-list-item-title">
+                    КПП:
+                </label>
+                <input class="company-data-page__company-list-item-input disabled" type="text" x-bind:class="{'disabled': toggleInput === false}">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info">
+                <label class="company-data-page__company-list-item-title">
+                  Адрес:
+                </label>
+                <input class="company-data-page__company-list-item-input disabled" type="text" placeholder="Укажите адрес..." x-bind:class="{'disabled': toggleInput === false}">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info btn-group">
+                <button type="button" class="btn btn--flat company-data-page__company-list-item-delete-consignee-btn" x-on:click="$el.closest('.company-data-page__company-list').remove()">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 1L1 9M1 1L9 9" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>  
+                    Удалить                  
+                </button>
+                <button type="button" class="btn btn--secondary company-data-page__company-list-item-edit-consignee-btn" x-on:click="toggleInput = !toggleInput">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === false">
+                    <path d="M7.99984 2.33317L10.6665 4.99984M1.6665 11.3332H4.33317L11.3332 4.33321C11.6868 3.97959 11.8855 3.49997 11.8855 2.99988C11.8855 2.49978 11.6868 2.02016 11.3332 1.66654C10.9795 1.31292 10.4999 1.11426 9.99984 1.11426C9.49974 1.11426 9.02013 1.31292 8.6665 1.66654L1.6665 8.66654V11.3332Z" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === true">
+                      <path d="M1.3335 4.99984L4.66683 8.33317L11.3335 1.6665" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                  <span x-text="toggleInput === false ? 'Редактировать' : 'Сохранить'"></span>
+                </button>
+            </div>
+          </li>
+        </ul>
+        <ul class="company-data-page__company-list" role="list" x-data="{toggleInput: false }">
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info radio-input">
+              <input type="radio" class="company-data-page__company-list-item-radio-input" name="consignee" id="Кот Ивана Александровича">
+                <label for="Кот Ивана Александровича" class="company-data-page__company-list-item-title radio-input">
+                  Кот Ивана Александровича
+                </label>
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item consignee-tab two-cols">
+            <div class="company-data-page__company-list-item-info">
+                <label for="companyINN" class="company-data-page__company-list-item-title">
+                    ИНН:
+                </label>
+                <input class="company-data-page__company-list-item-input disabled" type="text" x-bind:class="{'disabled': toggleInput === false}">
+            </div>
+            <div class="company-data-page__company-list-item-info">
+                <label for="companyKPP" class="company-data-page__company-list-item-title">
+                    КПП:
+                </label>
+                <input class="company-data-page__company-list-item-input disabled" type="text" x-bind:class="{'disabled': toggleInput === false}">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info">
+                <label class="company-data-page__company-list-item-title">
+                  Адрес:
+                </label>
+                <input class="company-data-page__company-list-item-input disabled" type="text" placeholder="Укажите адрес..." x-bind:class="{'disabled': toggleInput === false}">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info btn-group">
+                <button type="button" class="btn btn--flat company-data-page__company-list-item-delete-consignee-btn" x-on:click="$el.closest('.company-data-page__company-list').remove()">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 1L1 9M1 1L9 9" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>  
+                    Удалить                  
+                </button>
+                <button type="button" class="btn btn--secondary company-data-page__company-list-item-edit-consignee-btn" x-on:click="toggleInput = !toggleInput">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === false">
+                    <path d="M7.99984 2.33317L10.6665 4.99984M1.6665 11.3332H4.33317L11.3332 4.33321C11.6868 3.97959 11.8855 3.49997 11.8855 2.99988C11.8855 2.49978 11.6868 2.02016 11.3332 1.66654C10.9795 1.31292 10.4999 1.11426 9.99984 1.11426C9.49974 1.11426 9.02013 1.31292 8.6665 1.66654L1.6665 8.66654V11.3332Z" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === true">
+                      <path d="M1.3335 4.99984L4.66683 8.33317L11.3335 1.6665" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                  <span x-text="toggleInput === false ? 'Редактировать' : 'Сохранить'"></span>
+                </button>
+            </div>
+          </li>
+        </ul>
+        <template x-for="consigneeList in consigneeLists">
+          <ul class="company-data-page__company-list" role="list" x-data="{toggleInput: false }">
+            <li class="company-data-page__company-list-item consignee-tab">
+              <div class="company-data-page__company-list-item-info radio-input">
+                <input type="radio" class="company-data-page__company-list-item-radio-input" name="consignee" x-bind:id="consigneeList.name">
+                  <label x-bind:for="consigneeList.name" class="company-data-page__company-list-item-title radio-input" x-text="consigneeList.name">
+                  </label>
+              </div>
+            </li>
+            <li class="company-data-page__company-list-item consignee-tab two-cols">
+              <div class="company-data-page__company-list-item-info">
+                  <label for="companyINN" class="company-data-page__company-list-item-title">
+                      ИНН:
+                  </label>
+                  <input class="company-data-page__company-list-item-input disabled" type="text" x-bind:class="{'disabled': toggleInput === false}" x-bind:value="consigneeList.INN">
+              </div>
+              <div class="company-data-page__company-list-item-info">
+                  <label for="companyKPP" class="company-data-page__company-list-item-title">
+                      КПП:
+                  </label>
+                  <input class="company-data-page__company-list-item-input disabled" type="text" x-bind:class="{'disabled': toggleInput === false}" x-bind:value="consigneeList.KPP">
+              </div>
+            </li>
+            <li class="company-data-page__company-list-item consignee-tab">
+              <div class="company-data-page__company-list-item-info">
+                  <label class="company-data-page__company-list-item-title">
+                    Адрес:
+                  </label>
+                  <input class="company-data-page__company-list-item-input disabled" type="text" placeholder="Укажите адрес..." x-bind:class="{'disabled': toggleInput === false}" x-bind:value="consigneeList.address">
+              </div>
+            </li>
+            <li class="company-data-page__company-list-item consignee-tab">
+              <div class="company-data-page__company-list-item-info btn-group">
+                  <button type="button" class="btn btn--flat company-data-page__company-list-item-delete-consignee-btn" x-on:click="consigneeLists = consigneeLists.filter(i => i !== consigneeList)">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 1L1 9M1 1L9 9" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>  
+                      Удалить                  
+                  </button>
+                  <button type="button" class="btn btn--secondary company-data-page__company-list-item-edit-consignee-btn" x-on:click="toggleInput = !toggleInput">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === false">
+                      <path d="M7.99984 2.33317L10.6665 4.99984M1.6665 11.3332H4.33317L11.3332 4.33321C11.6868 3.97959 11.8855 3.49997 11.8855 2.99988C11.8855 2.49978 11.6868 2.02016 11.3332 1.66654C10.9795 1.31292 10.4999 1.11426 9.99984 1.11426C9.49974 1.11426 9.02013 1.31292 8.6665 1.66654L1.6665 8.66654V11.3332Z" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === true">
+                        <path d="M1.3335 4.99984L4.66683 8.33317L11.3335 1.6665" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    <span x-text="toggleInput === false ? 'Редактировать' : 'Сохранить'"></span>
+                  </button>
+              </div>
+            </li>
+          </ul>
+        </template>
+        </div>
+        <AddConsigneeAltPopup></AddConsigneeAltPopup>
+      </div>
+      <div class="site-section__tab-wrapper company-data-page__tab-wrapper" x-show="table === 3" x-data="{addressLists:[]}">
+        <button type="button" class="btn btn--primary company-data-page__add-address-btn" x-show="companyNameINN.length > 0 && companyINN.length > 0 && companyKPP.length > 0 && JurAddress.length > 0 && PostAddress.length > 0 && PassportSerialNumber.length > 0 && DateOfIssue.length > 0 && IssuedBy.length > 0" x-on:click="addAddressAltPopup = true">Добавить адрес</button>
+        <div class="company-data-page__address-lists-wrapper" x-show="companyNameINN.length > 0 && companyINN.length > 0 && companyKPP.length > 0 && JurAddress.length > 0 && PostAddress.length > 0 && PassportSerialNumber.length > 0 && DateOfIssue.length > 0 && IssuedBy.length > 0">
+        <ul class="company-data-page__company-list" role="list" x-data="{toggleInput: false }">
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info radio-input">
+              <input type="radio" class="company-data-page__company-list-item-radio-input" name="consignee" id="Филиал на Луне" checked>
+                <label for="Филиал на Луне" class="company-data-page__company-list-item-title radio-input">
+                  Филиал на Луне
+                </label>
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info">
+                <label class="company-data-page__company-list-item-title">
+                  Адрес:
+                </label>
+                <input class="company-data-page__company-list-item-input disabled" type="text" placeholder="Укажите адрес..." x-bind:class="{'disabled': toggleInput === false}">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info btn-group">
+                <button type="button" class="btn btn--flat company-data-page__company-list-item-delete-consignee-btn" x-on:click="$el.closest('.company-data-page__company-list').remove()">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 1L1 9M1 1L9 9" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>  
+                    Удалить                  
+                </button>
+                <button type="button" class="btn btn--secondary company-data-page__company-list-item-edit-consignee-btn" x-on:click="toggleInput = !toggleInput">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === false">
+                    <path d="M7.99984 2.33317L10.6665 4.99984M1.6665 11.3332H4.33317L11.3332 4.33321C11.6868 3.97959 11.8855 3.49997 11.8855 2.99988C11.8855 2.49978 11.6868 2.02016 11.3332 1.66654C10.9795 1.31292 10.4999 1.11426 9.99984 1.11426C9.49974 1.11426 9.02013 1.31292 8.6665 1.66654L1.6665 8.66654V11.3332Z" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === true">
+                      <path d="M1.3335 4.99984L4.66683 8.33317L11.3335 1.6665" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                  <span x-text="toggleInput === false ? 'Редактировать' : 'Сохранить'"></span>
+                </button>
+            </div>
+          </li>
+        </ul>
+        <ul class="company-data-page__company-list" role="list" x-data="{toggleInput: false }">
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info radio-input">
+              <input type="radio" class="company-data-page__company-list-item-radio-input" name="consignee" id="Филиал на Луне 1">
+                <label for="Филиал на Луне 1" class="company-data-page__company-list-item-title radio-input">
+                  Филиал на Луне 1
+                </label>
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info">
+                <label class="company-data-page__company-list-item-title">
+                  Адрес:
+                </label>
+                <input class="company-data-page__company-list-item-input disabled" type="text" placeholder="Укажите адрес..." x-bind:class="{'disabled': toggleInput === false}">
+            </div>
+          </li>
+          <li class="company-data-page__company-list-item consignee-tab">
+            <div class="company-data-page__company-list-item-info btn-group">
+                <button type="button" class="btn btn--flat company-data-page__company-list-item-delete-consignee-btn" x-on:click="$el.closest('.company-data-page__company-list').remove()">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 1L1 9M1 1L9 9" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>  
+                    Удалить                  
+                </button>
+                <button type="button" class="btn btn--secondary company-data-page__company-list-item-edit-consignee-btn" x-on:click="toggleInput = !toggleInput">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === false">
+                    <path d="M7.99984 2.33317L10.6665 4.99984M1.6665 11.3332H4.33317L11.3332 4.33321C11.6868 3.97959 11.8855 3.49997 11.8855 2.99988C11.8855 2.49978 11.6868 2.02016 11.3332 1.66654C10.9795 1.31292 10.4999 1.11426 9.99984 1.11426C9.49974 1.11426 9.02013 1.31292 8.6665 1.66654L1.6665 8.66654V11.3332Z" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === true">
+                      <path d="M1.3335 4.99984L4.66683 8.33317L11.3335 1.6665" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                  <span x-text="toggleInput === false ? 'Редактировать' : 'Сохранить'"></span>
+                </button>
+            </div>
+          </li>
+        </ul>
+        <template x-for="addressList in addressLists">
+          <ul class="company-data-page__company-list" role="list" x-data="{toggleInput: false }">
+            <li class="company-data-page__company-list-item consignee-tab">
+              <div class="company-data-page__company-list-item-info radio-input">
+                <input type="radio" class="company-data-page__company-list-item-radio-input" name="consignee" x-bind:id="addressList.name">
+                  <label x-bind:for="addressList.name" class="company-data-page__company-list-item-title radio-input" x-text="addressList.name">
+                  </label>
+              </div>
+            </li>
+            <li class="company-data-page__company-list-item consignee-tab">
+              <div class="company-data-page__company-list-item-info">
+                  <label class="company-data-page__company-list-item-title">
+                    Адрес:
+                  </label>
+                  <input class="company-data-page__company-list-item-input disabled" type="text" placeholder="Укажите адрес..." x-bind:class="{'disabled': toggleInput === false}" x-bind:value="addressList.address">
+              </div>
+            </li>
+            <li class="company-data-page__company-list-item consignee-tab">
+              <div class="company-data-page__company-list-item-info btn-group">
+                  <button type="button" class="btn btn--flat company-data-page__company-list-item-delete-consignee-btn" x-on:click="addressLists = addressLists.filter(i => i !== addressList)">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 1L1 9M1 1L9 9" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>  
+                      Удалить                  
+                  </button>
+                  <button type="button" class="btn btn--secondary company-data-page__company-list-item-edit-consignee-btn" x-on:click="toggleInput = !toggleInput">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === false">
+                      <path d="M7.99984 2.33317L10.6665 4.99984M1.6665 11.3332H4.33317L11.3332 4.33321C11.6868 3.97959 11.8855 3.49997 11.8855 2.99988C11.8855 2.49978 11.6868 2.02016 11.3332 1.66654C10.9795 1.31292 10.4999 1.11426 9.99984 1.11426C9.49974 1.11426 9.02013 1.31292 8.6665 1.66654L1.6665 8.66654V11.3332Z" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" x-show="toggleInput === true">
+                        <path d="M1.3335 4.99984L4.66683 8.33317L11.3335 1.6665" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    <span x-text="toggleInput === false ? 'Редактировать' : 'Сохранить'"></span>
+                  </button>
+              </div>
+            </li>
+          </ul>
+        </template>
+        </div>
+        <AddAddressAltPopup></AddAddressAltPopup>
+      </div>
+      </form>
+      <NormalizeDataPopup></NormalizeDataPopup>
+    </section>
+  </Layout>
+  
+
+  <script type="module">
+    // Tempus Dominus JavaScript datepicker https://getdatepicker.com/ 
+    import { TempusDominus } from 'https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/js/tempus-dominus.esm.js';
+  
+    new TempusDominus(document.getElementById('companyDataPageDateTimePicker'), {
+      display: {
+        theme: 'light',
+        buttons: {
+          clear: true,
+        },
+        components: {
+          clock: false,
+          hours: false,
+          minutes: false,
+          seconds: false,
+        },
+      }
+    });
+  </script>

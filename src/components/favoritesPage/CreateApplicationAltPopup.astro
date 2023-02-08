@@ -1,0 +1,57 @@
+<div class="alt-popup create-application-alt-popup" x-bind:class="{'active': createApplicationAltPopup === true}" x-on:click.self="createApplicationAltPopup = false">
+    <form action="#" method="post" class="create-application-alt-popup__form">
+    <div class="alt-popup__content create-application-alt-popup__content">
+     <div class="create-application-alt-popup__top-row">
+        <p class="alt-popup__title create-application-alt-popup__title">Вы выбрали</p>
+        <button class="create-application-alt-popup__close-btn" type="button" x-on:click="createApplicationAltPopup = false">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 1L1 15M1 1L15 15" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>                              
+        </button>
+     </div>
+     <ul role="list" class="create-application-alt-popup__list" x-data="{items:[
+        {title:'КЦ2-1000'},
+        {title:'КЦ2-250Н'},
+        {title:'КЦ2ВН-250'}, 
+        {title:'КЦ2-1001'},
+        {title:'КЦ2-251Н'},
+        {title:'КЦ2ВН-251'}
+        ]
+    }">
+         <template x-for="item in items">
+            <li class="create-application-alt-popup__list-item">
+                 <div class="create-application-alt-popup__list-item-left">
+                    <img src="/images/create-application-alt-popup-img.png" alt="create application alt popup image" class="create-application-alt-popup__list-item-img" loading="lazy" decoding="async" width="80" height="52">
+                    <p class="create-application-alt-popup__list-item-title" x-text="item.title"></p>
+                 </div>
+                 <button type="button" class="create-application-alt-popup__list-item-delete-btn" x-on:click="items = items.filter(i => i !== item)">
+                    <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.999756 5.44444H18.7775M7.66642 9.88889V16.5556M12.1109 9.88889V16.5556M2.11087 5.44444L3.22198 18.7778C3.22198 19.3671 3.4561 19.9324 3.87285 20.3491C4.2896 20.7659 4.85483 21 5.4442 21H14.3331C14.9225 21 15.4877 20.7659 15.9044 20.3491C16.3212 19.9324 16.5553 19.3671 16.5553 18.7778L17.6664 5.44444M6.55531 5.44444V2.11111C6.55531 1.81643 6.67238 1.53381 6.88075 1.32544C7.08912 1.11706 7.37174 1 7.66642 1H12.1109C12.4056 1 12.6882 1.11706 12.8965 1.32544C13.1049 1.53381 13.222 1.81643 13.222 2.11111V5.44444" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                        
+                 </button>
+            </li>
+         </template>
+     </ul>
+     <div class="create-application-alt-popup__bottom">
+        <div class="create-application-alt-popup__comments">
+            <p class="create-application-alt-popup__comments-title">
+                Комментарий:
+            </p>
+            <textarea class="create-application-alt-popup__comments-textarea" placeholder="Введите комментарий.."></textarea>
+        </div>
+        <ul role="list" class="create-application-alt-popup__btn-control-group">
+            <li class="create-application-alt-popup__btn-control-group-item">
+                <button type="button" class="btn btn--flat create-application-alt-popup__undo-btn" x-on:click="settingsContragentsModulePopup = false">
+                    Отменить
+                </button>
+            </li>
+            <li class="create-application-alt-popup__btn-control-group-item">
+                <button type="submit" class="btn btn--primary create-application-alt-popup__submit-btn">
+                    Отправить заявку
+                </button>
+            </li>
+        </ul>
+     </div>
+</div>
+</form>
+</div>

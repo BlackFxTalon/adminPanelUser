@@ -1,0 +1,52 @@
+.orders {
+    
+    &__status-btn {
+        max-width: 128px;
+    }
+
+    &__table-list-item-address {
+        @include media-extra-large() {
+            max-width: 16ch;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &__table-list-item-address.desktop-hide {
+        @include media-extra-large() {
+            display: none;
+        }
+    }
+
+    &__table-list-item-address.mobile-hide {
+        display: none;
+
+        @include media-extra-large() {
+            display: block;
+        }
+    }
+
+
+    &__detail-btn-link {
+        max-width: 113px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__table-list-item.mobile-hide {
+        display: none;
+
+        @include media-extra-large() {
+            display: flex;
+        }
+    }
+
+    &__table-list {
+        @include media-extra-large() {
+            grid-template-columns: repeat(7,1fr);
+        }
+    }
+}

@@ -1,0 +1,229 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CalculateDeliveryAltPopup from "../components/favoritesPage/CalculateDeliveryAltPopup.astro";
+import CreateApplicationAltPopup from "../components/favoritesPage/CreateApplicationAltPopup.astro";
+---
+<Layout title="страница Избранное">
+    <section class="site-section favorites-page__site-section">
+        <div class="site-section__top-row favorites-page__top-row">
+            <h2 class="site-section__title favorites-page__title">Избранное</h2>
+        </div>
+        <div class="favorites-page__grid">
+            <div class="favorites-page__wrapper" 
+            x-data="
+            {
+                calculateDeliveryAltPopup: false,
+                createApplicationAltPopup: false,
+                cards:[1,2,3,4], 
+                total: 0,
+                chooseAllCardsItems() {
+                    let total = 1;
+                    const favoritesPageChooseCounterTotalText = $el.querySelector('.favorites-page__choose-counter-total');
+                    const cardsList = $el.querySelector('.favorites-page__cards-list');
+                    cardsListItems = cardsList.querySelectorAll('.favorites-page__cards-list-item');
+                    cardsListItemsCheckboxes = cardsList.querySelectorAll('.favorites-page__card-checkbox');
+                    for(cardsListItem of cardsListItems) {
+                        cardsListItem.setAttribute('x-data', '{activeClass: true}');
+                        cardsListItem.classList.add('active');
+                    }
+                    for(cardsListItemsCheckbox of cardsListItemsCheckboxes) {
+                        cardsListItemsCheckbox.checked = true;
+                        favoritesPageChooseCounterTotalText.textContent = total++;
+                    }
+                },
+                deleteCertainChosenCardsItems() {
+                    const cardsList = $el.querySelector('.favorites-page__cards-list');
+                    activeCardsListItems = cardsList.querySelectorAll('.favorites-page__cards-list-item.active');
+                    for(activeCardsListItem of activeCardsListItems) {
+                        activeCardsListItem.remove();
+                    }
+                }
+            }">
+                <div class="favorites-page__wrapper-top-row">
+                    <div class="favorites-page__wrapper-top-row-left">
+                        <h2 class="site-section__title favorites-page__title">Сайт</h2>
+                        <p class="favorites-page__choose-counter mobile-hide">
+                            <span>Выбрано:</span>
+                            <span x-text="total" class="favorites-page__choose-counter-total"></span>
+                          </p>
+                    </div>
+                    <div class="favorites-page__wrapper-top-row-right">
+                        <button type="button" class="btn btn--flat favorites-page__delete-chosen-btn mobile-hide" x-on:click="deleteCertainChosenCardsItems; total > 0 ? total = 0: ''">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 1L1 9M1 1L9 9" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                
+                            Удалить выбранное
+                           </button>
+                        <button type="button" class="btn btn--secondary favorites-page__choose-all-btn" x-on:click="chooseAllCardsItems">
+                            Выбрать всё
+                        </button>
+                    </div>
+                </div>
+                <div class="favorites-page__wrapper-bottom-row">
+                   <p class="favorites-page__choose-counter">
+                     <span>Выбрано:</span>
+                     <span x-text="total" class="favorites-page__choose-counter-total"></span>
+                   </p>
+                </div>
+                <ul role="list" class="favorites-page__cards-list">
+                    <template x-for="(card,index) in cards" :key="card">
+                        <li class="favorites-page__cards-list-item" x-bind:class="{'active': activeClass === true }" x-data="{activeClass: false}">
+                            <figure class="favorites-page__card">
+                                <div class="favorites-page__card-img-wrapper">
+                                    <img class="favorites-page__card-img" src="/images/favorites-page-img-placeholder.svg" alt="favorites page image placeholder" loading="lazy" decoding="async">
+                                    <div class="favorites-page__card-checkbox-wrapper"> 
+                                    <input type="checkbox" class="favorites-page__card-checkbox" x-bind:id="'cardCheckbox'+ index" x-on:change="$el.checked === true ? total++ : total--; activeClass = !activeClass">
+                                    <label x-bind:for="'cardCheckbox'+ index" class="favorites-page__card-checkbox-label"></label>
+                                </div>
+                                </div>
+                                <figcaption class="favorites-page__card-figcaption">
+                                    <div class="favorites-page__card-figcaption-top">
+                                        <div class="favorites-page__card-figcaption-left">
+                                           <p class="favorites-page__card-title">Цилиндрический редуктор </p> 
+                                           <p class="favorites-page__card-subtitle">
+                                            1Ц2У-125
+                                           </p>
+                                        </div>
+                                        <button type="button" class="favorites-page__card-favorites-btn" x-on:click="cards = cards.filter(i => i !== card)">
+                                            <svg class="favorites-page__card-favorites-btn-icon" width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M11 16.75L4.82802 19.995L6.00702 13.122L1.00702 8.25495L7.90702 7.25495L10.993 1.00195L14.079 7.25495L20.979 8.25495L15.979 13.122L17.158 19.995L11 16.75Z" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>                                                
+                                        </button>
+                                    </div>
+                                    <a href="#" class="favorites-page__card-link">
+                                        Перейти в карточку товара
+                                        <svg class="favorites-page__card-link-icon" width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 5H15M15 5L11 9M15 5L11 1" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>                                            
+                                    </a>
+                                </figcaption>
+                            </figure>
+                        </li>
+                    </template>
+                </ul>
+                <ul role="list" class="favorites-page__wrapper-btn-group">
+                    <li class="favorites-page__wrapper-btn-group-item">
+                        <button type="button" class="btn btn--secondary favorites-page__delivery-calc-btn" x-on:click="calculateDeliveryAltPopup = true">
+                            Расчитать доставку
+                        </button>
+                    </li>
+                    <li class="favorites-page__wrapper-btn-group-item">
+                        <button type="button" class="btn btn--primary favorites-page__create-application-btn" x-on:click="createApplicationAltPopup = true">
+                            Создать заявку
+                        </button>
+                    </li>
+                </ul>
+                <CalculateDeliveryAltPopup></CalculateDeliveryAltPopup>
+                <CreateApplicationAltPopup></CreateApplicationAltPopup>
+            </div>
+            <div class="favorites-page__wrapper" 
+            x-data="
+            {
+                calculateDeliveryAltPopup: false,
+                createApplicationAltPopup: false,
+                cards:[1,2,3,4], 
+                total: 0,
+                chooseAllCardsItems() {
+                    let total = 1;
+                    const favoritesPageChooseCounterTotalText = $el.querySelector('.favorites-page__choose-counter-total');
+                    const cardsList = $el.querySelector('.favorites-page__cards-list');
+                    cardsListItems = cardsList.querySelectorAll('.favorites-page__cards-list-item');
+                    cardsListItemsCheckboxes = cardsList.querySelectorAll('.favorites-page__card-checkbox');
+                    for(cardsListItem of cardsListItems) {
+                        cardsListItem.setAttribute('x-data', '{activeClass: true}');
+                        cardsListItem.classList.add('active');
+                    }
+                    for(cardsListItemsCheckbox of cardsListItemsCheckboxes) {
+                        cardsListItemsCheckbox.checked = true;
+                        favoritesPageChooseCounterTotalText.textContent = total++;
+                    }
+                },
+                deleteCertainChosenCardsItems() {
+                    const cardsList = $el.querySelector('.favorites-page__cards-list');
+                    activeCardsListItems = cardsList.querySelectorAll('.favorites-page__cards-list-item.active');
+                    for(activeCardsListItem of activeCardsListItems) {
+                        activeCardsListItem.remove();
+                    }
+                }
+            }">
+                <div class="favorites-page__wrapper-top-row">
+                    <div class="favorites-page__wrapper-top-row-left">
+                        <h2 class="site-section__title favorites-page__title">Сайт</h2>
+                        <p class="favorites-page__choose-counter mobile-hide">
+                            <span>Выбрано:</span>
+                            <span x-text="total" class="favorites-page__choose-counter-total"></span>
+                          </p>
+                    </div>
+                    <div class="favorites-page__wrapper-top-row-right">
+                        <button type="button" class="btn btn--flat favorites-page__delete-chosen-btn mobile-hide" x-on:click="deleteCertainChosenCardsItems; total > 0 ? total = 0: ''">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 1L1 9M1 1L9 9" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                
+                            Удалить выбранное
+                           </button>
+                        <button type="button" class="btn btn--secondary favorites-page__choose-all-btn" x-on:click="chooseAllCardsItems">
+                            Выбрать всё
+                        </button>
+                    </div>
+                </div>
+                <div class="favorites-page__wrapper-bottom-row">
+                   <p class="favorites-page__choose-counter">
+                     <span>Выбрано:</span>
+                     <span x-text="total" class="favorites-page__choose-counter-total"></span>
+                   </p>
+                </div>
+                <ul role="list" class="favorites-page__cards-list">
+                    <template x-for="(card,index) in cards" :key="card">
+                        <li class="favorites-page__cards-list-item" x-bind:class="{'active': activeClass === true }" x-data="{activeClass: false}">
+                            <figure class="favorites-page__card">
+                                <div class="favorites-page__card-img-wrapper">
+                                    <img class="favorites-page__card-img" src="/images/favorites-page-img-placeholder.svg" alt="favorites page image placeholder" loading="lazy" decoding="async">
+                                    <div class="favorites-page__card-checkbox-wrapper"> 
+                                    <input type="checkbox" class="favorites-page__card-checkbox" x-bind:id="'cardCheckbox'+ index" x-on:change="$el.checked === true ? total++ : total--; activeClass = !activeClass">
+                                    <label x-bind:for="'cardCheckbox'+ index" class="favorites-page__card-checkbox-label"></label>
+                                </div>
+                                </div>
+                                <figcaption class="favorites-page__card-figcaption">
+                                    <div class="favorites-page__card-figcaption-top">
+                                        <div class="favorites-page__card-figcaption-left">
+                                           <p class="favorites-page__card-title">Цилиндрический редуктор </p> 
+                                           <p class="favorites-page__card-subtitle">
+                                            1Ц2У-125
+                                           </p>
+                                        </div>
+                                        <button type="button" class="favorites-page__card-favorites-btn" x-on:click="cards = cards.filter(i => i !== card)">
+                                            <svg class="favorites-page__card-favorites-btn-icon" width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M11 16.75L4.82802 19.995L6.00702 13.122L1.00702 8.25495L7.90702 7.25495L10.993 1.00195L14.079 7.25495L20.979 8.25495L15.979 13.122L17.158 19.995L11 16.75Z" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>                                                
+                                        </button>
+                                    </div>
+                                    <a href="#" class="favorites-page__card-link">
+                                        Перейти в карточку товара
+                                        <svg class="favorites-page__card-link-icon" width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 5H15M15 5L11 9M15 5L11 1" stroke="#7C69EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>                                            
+                                    </a>
+                                </figcaption>
+                            </figure>
+                        </li>
+                    </template>
+                </ul>
+                <ul role="list" class="favorites-page__wrapper-btn-group">
+                    <li class="favorites-page__wrapper-btn-group-item">
+                        <button type="button" class="btn btn--secondary favorites-page__delivery-calc-btn" x-on:click="calculateDeliveryAltPopup = true">
+                            Расчитать доставку
+                        </button>
+                    </li>
+                    <li class="favorites-page__wrapper-btn-group-item">
+                        <button type="button" class="btn btn--primary favorites-page__create-application-btn" x-on:click="createApplicationAltPopup = true">
+                            Создать заявку
+                        </button>
+                    </li>
+                </ul>
+                <CalculateDeliveryAltPopup></CalculateDeliveryAltPopup>
+                <CreateApplicationAltPopup></CreateApplicationAltPopup>
+            </div>
+        </div>
+    </section>
+  </Layout>
+  

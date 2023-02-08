@@ -1,0 +1,64 @@
+<div class="alt-popup add-consignee-alt-popup" x-bind:class="{'active': addConsigneeAltPopup === true}" x-on:click.self="addConsigneeAltPopup = false"
+x-data="{
+    consigneeNameINN: '',
+    consigneeINN: '',
+    consigneeKPP: '',
+    consigneeAddress: '',
+}"
+>
+    <div class="alt-popup__content add-consignee-alt-popup__content">
+     <div class="add-consignee-alt-popup__top-row">
+        <p class="alt-popup__title add-consignee-alt-popup__title">Добавление грузополучателя</p>
+        <button class="add-consignee-alt-popup__close-btn" type="button" x-on:click="addConsigneeAltPopup = false">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 1L1 13M1 1L13 13" stroke="#161C2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>                
+        </button>
+     </div>
+    <div class="alt-popup__body add-consignee-alt-popup__body">
+        <ul class="add-consignee-alt-popup__consignee-list" x-data="{tab: 'Legal entity/IP'}" role="list">
+            <li class="add-consignee-alt-popup__consignee-list-item ">
+               <ul role="list" class="add-consignee-alt-popup__consignee-list-tabs">
+                  <li class="add-consignee-alt-popup__consignee-list-tabs-item" x-bind:class="{'active': tab === 'Legal entity/IP'}" x-on:click="tab = 'Legal entity/IP'">
+                      Юр.лицо/ИП
+                  </li>
+                  <li class="add-consignee-alt-popup__consignee-list-tabs-item" x-bind:class="{'active': tab === 'Individual'}" x-on:click="tab = 'Individual'">
+                      Физ.лицо
+                  </li>
+               </ul>
+            </li>
+            <li class="add-consignee-alt-popup__consignee-list-item " x-show="tab === 'Legal entity/IP'">
+              <div class="add-consignee-alt-popup__consignee-list-item-info">
+                  <label for="consigneeNameINN" class="add-consignee-alt-popup__consignee-list-item-title">
+                    Грузополучатель:
+                  </label>
+                  <input class="add-consignee-alt-popup__consignee-list-item-input" type="text" name="consigneeNameINN" id="consigneeNameINN" placeholder="Введите ИНН или название компании" x-model="consigneeNameINN">
+              </div>
+            </li>
+            <li class="add-consignee-alt-popup__consignee-list-item  two-cols" x-show="tab === 'Legal entity/IP'">
+              <div class="add-consignee-alt-popup__consignee-list-item-info">
+                  <label for="consigneeINN" class="add-consignee-alt-popup__consignee-list-item-title">
+                      ИНН:
+                  </label>
+                  <input class="add-consignee-alt-popup__consignee-list-item-input" type="text" name="consigneeINN" id="consigneeINN" x-model="consigneeINN">
+              </div>
+              <div class="add-consignee-alt-popup__consignee-list-item-info">
+                  <label for="consigneeKPP" class="add-consignee-alt-popup__consignee-list-item-title">
+                      КПП:
+                  </label>
+                  <input class="add-consignee-alt-popup__consignee-list-item-input" type="text" name="consigneeKPP" id="consigneeKPP" x-model="consigneeKPP">
+              </div>
+            </li>
+            <li class="add-consignee-alt-popup__consignee-list-item " x-show="tab === 'Legal entity/IP'">
+              <div class="add-consignee-alt-popup__consignee-list-item-info">
+                  <label for="consigneeAddress" class="add-consignee-alt-popup__consignee-list-item-title">
+                    Адрес:
+                  </label>
+                  <input class="add-consignee-alt-popup__consignee-list-item-input" type="text" name="consigneeAddress" id="consigneeAddress" placeholder="Введите адрес получателя" x-model="consigneeAddress">
+              </div>
+            </li>
+        </ul>
+        <button type="button" class="btn btn--primary add-consignee-alt-popup__save-btn" x-bind:class="{'disabled': consigneeNameINN.length === 0 && consigneeINN.length === 0 && consigneeKPP.length === 0 && consigneeAddress.length === 0}" x-on:click="consigneeLists.push({name: consigneeNameINN,INN: consigneeINN,KPP: consigneeKPP,address: consigneeAddress}); consigneeNameINN = '';consigneeINN = '';consigneeKPP = '';consigneeAddress = ''; addConsigneeAltPopup = false">Сохранить</button>
+    </div>
+</div>
+</div>

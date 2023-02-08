@@ -1,0 +1,43 @@
+<ul role="list" class="events-board-page__toast-list">
+  <li class="events-board-page__toast-list-item danger">
+    <div class="events-board-page__toast-list-item-top">
+        <p class="events-board-page__toast-list-item-title">Заполните данные о компании или физ лице</p>
+            <button type="button" class="events-board-page__toast-list-item-delete-btn" x-on:click="$el.closest('.events-board-page__toast-list-item').remove()">
+                <svg class="events-board-page__toast-list-item-delete-btn-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 1L1 9M1 1L9 9" stroke="#F9FBFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                    
+            </button>
+    </div>
+    <div class="events-board-page__toast-list-item-bottom">
+        <a href="#" class="events-board-page__toast-list-item-link">перейти</a>
+    </div>
+  </li>
+  <template x-for="i in 2">
+    <li class="events-board-page__toast-list-item blue">
+        <div class="events-board-page__toast-list-item-top">
+            <p class="events-board-page__toast-list-item-title">Заполните данные о компании или физ лице</p>
+                <button type="button" class="events-board-page__toast-list-item-delete-btn" x-on:click="$el.closest('.events-board-page__toast-list-item').remove()">
+                    <svg class="events-board-page__toast-list-item-delete-btn-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 1L1 9M1 1L9 9" stroke="#F9FBFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>                    
+                </button>
+        </div>
+        <div class="events-board-page__toast-list-item-bottom">
+            <a href="#" class="events-board-page__toast-list-item-link">перейти</a>
+        </div>
+      </li>
+  </template>
+  <li class="events-board-page__toast-list-item green">
+    <div class="events-board-page__toast-list-item-top">
+        <p class="events-board-page__toast-list-item-title">Заполните данные о компании или физ лице</p>
+            <button type="button" class="events-board-page__toast-list-item-delete-btn" x-on:click="$el.closest('.events-board-page__toast-list-item').remove()">
+                <svg class="events-board-page__toast-list-item-delete-btn-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 1L1 9M1 1L9 9" stroke="#F9FBFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                    
+            </button>
+    </div>
+    <div class="events-board-page__toast-list-item-bottom">
+        <a href="#" class="events-board-page__toast-list-item-link">перейти</a>
+    </div>
+  </li>
+</ul>

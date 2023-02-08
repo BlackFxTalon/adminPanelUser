@@ -1,0 +1,392 @@
+.company-data-page {
+
+    &__site-section {
+        @include media-extra-large() {
+            min-width: 810px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    &__table-tabs {
+        @include media-custom-max(1199px) {
+            padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        overflow-x: auto;
+        scrollbar-width: none;
+        white-space: nowrap;
+        gap: 0;
+        font-weight: 600;
+font-size: 22px;
+line-height: 24px;
+        }
+        @include media-extra-large() {
+            z-index: 1;
+            top: 2px;
+        }
+    }
+   
+    &__table-tabs-item-btn {
+        @include media-custom-max(1199px) {
+            font-size: 22px;
+            line-height: 24px;
+            padding: 8px 16px;
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid var(--grey-color);
+        }
+    }
+
+    &__table-tabs-item-btn.active {
+        @include media-custom-max(1199px) {
+            background-color: unset;
+            border-color: unset;
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+        }
+    }
+
+    &__form {
+        @include media-extra-large() {
+            background-color: var(--gray100);
+            border: 1px solid var(--grey-color);
+            border-radius: 4px;
+            padding-bottom: 20px;
+        }
+    }
+
+    &__msg-toast,
+    &__normalize-data-toast {
+        background-color: var(--danger);
+        border-radius: 4px;
+        padding: 12px 16px;
+        margin-top: 24px;
+        font-weight: 400;
+font-size: 16px;
+line-height: 18px;
+color: var(--gray100);
+
+@include media-extra-large() {
+    margin-top: 16px;
+    padding: 16px 63px;
+    white-space: nowrap;
+}
+    }
+
+    &__normalize-data-toast {
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 12px;
+        padding-top: 12px;
+        padding-left: 6.5px;
+        padding-right: 6.5px;
+        padding-bottom: 16px;
+
+        @include media-extra-large() {
+            display: flex;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    &__normalize-data-btn {
+        font-weight: 400;
+font-size: 14px;
+line-height: 18px;
+color: var(--gray100);
+border-bottom: 1px dashed var(--gray100);
+padding-bottom: 4px;
+max-width: 156px;
+margin-left: auto;
+margin-right: auto;
+
+@include media-extra-large() {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5px;
+}
+    }
+
+    &__company-list {
+       padding: 0;
+       margin: 0; 
+       background-color: var(--gray100);
+       border: 1px solid var(--grey-color);
+       border-radius: 4px;
+
+       @include media-extra-large() {
+        border: 0;
+       }
+    }
+
+    &__company-list.company-tab {
+        margin-top: 24px;
+
+        @include media-extra-large() {
+            margin-top: 16px;
+        }
+    }
+
+    &__company-list-item.company-tab:not(:first-child) {
+        padding: 16px;
+
+        @include media-extra-large() {
+            padding-left: 20px;
+            border-bottom: 1px solid var(--grey-color);
+        }
+    }
+
+    &__company-list-item.consignee-tab {
+        padding: 16px;
+    }
+
+    &__company-list-item.two-cols {
+        display: flex;
+        align-items: center;
+
+        @include media-extra-large() {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+        }
+    }
+
+    &__company-list-item:not(:last-child) {
+        border-bottom: 1px solid var(--grey-color);
+    }
+
+    &__company-list-item.company-tab:not(:first-child, :last-child) {
+        border-bottom: 1px solid var(--grey-color);
+    }
+
+
+    &__company-list-tabs {
+        padding: 0;
+        padding-top: 8px;
+        padding-left: 8px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+font-size: 16px;
+line-height: 18px;
+color: var(--dark-grey);
+border-bottom: 1px solid var(--grey-color);
+
+@include media-extra-large() {
+    font-size: 22px;
+line-height: 24px;
+grid-gap: 8px;
+gap: 8px;
+padding-left: 20px;
+}
+    }
+
+    &__company-list-tabs-item {
+        padding: 8px 16px;
+         transition: .3s ease-in-out;
+         border-bottom: 1px solid transparent;
+         position: relative;
+         top: 1px;
+    }
+
+    &__company-list-tabs-item.active {
+          border-bottom-color: var(--primary);
+          color: var(--primary);
+    }
+
+    &__company-list-item-info {
+        display: grid;
+        align-items: center;
+        gap: 16px;
+        grid-template-columns: max-content 1fr;
+        position: relative;
+    }
+
+    &__company-list-item-info.btn-group {
+        display: flex;
+        justify-content: space-between;
+
+        @include media-extra-large() {
+            justify-content: flex-end;
+        }
+    }
+
+    &__company-list-item-radio-input {
+        width: 18px;
+        height: 18px;
+        opacity: 0;
+    }
+
+    &__company-list-item-title.radio-input {
+        @include media-extra-large() {
+            font-size: 22px;
+line-height: 24px;
+        }
+    }
+
+    &__company-list-item-radio-input:checked + .company-data-page__company-list-item-title.radio-input::before {
+        border-color: var(--primary);
+    }
+
+    &__company-list-item-radio-input:checked + .company-data-page__company-list-item-title.radio-input::after {
+       opacity: 1;
+    }
+
+    &__company-list-item-title {
+        font-weight: 600;
+font-size: 16px;
+line-height: 18px;
+color: var(--dash-dark);
+    }
+
+    &__company-list-item-title.radio-input::before,
+    &__company-list-item-title.radio-input::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        transition: .3s ease-in-out;
+        border-radius: 50%;
+
+        @include media-extra-large() {
+            top: 4px;
+        }
+    }
+
+    &__company-list-item-title.radio-input::before {
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--grey600);
+    }
+
+    &__company-list-item-title.radio-input::after {
+        width: 10px;
+        height: 10px;
+        opacity: 0;
+        background-color: var(--primary);
+        left: 4px;
+    top: 4px;
+
+    @include media-extra-large() {
+        top: 8px;
+    }
+    }
+
+    &__company-list-item-input {
+        font-weight: 400;
+font-size: 16px;
+line-height: 18px;
+color: var(--dark-grey);
+    }
+
+    &__company-list-item-input.disabled {
+        pointer-events: none;
+    }
+
+    &__datepicker-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        grid-gap: 12px;
+    }
+
+    &__datepicker-wrapper.disabled {
+        pointer-events: none;
+    }
+
+    &__change-btn,
+    &__save-btn {
+        font-weight: 600;
+font-size: 16px;
+line-height: 18px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 32px;
+display: none;
+
+@include media-extra-large() {
+    margin-right: 20px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+    }
+
+    &__change-btn.active,
+    &__save-btn.active {
+        display: flex;
+    }
+
+    &__change-btn {
+            max-width: 103px;
+    }
+
+    &__save-btn {
+        max-width: 109px;
+    }
+
+    &__add-consignee-btn,
+    &__add-address-btn {
+        font-weight: 600;
+font-size: 16px;
+line-height: 18px;
+color: var(--gray100);
+margin-left: auto;
+margin-top: 24px;
+margin-bottom: 24px;
+
+@include media-extra-large() {
+    margin-right: 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+    }
+
+    &__add-consignee-btn {
+        max-width: 229px;
+    }
+    &__add-address-btn {
+        max-width: 147px;
+    }
+
+    &__company-list-item-delete-consignee-btn {
+        display: grid;
+        grid-template-columns: repeat(2,max-content);
+        gap: 12px;
+        max-width: 83px;
+        font-weight: 600;
+font-size: 16px;
+line-height: 18px;
+    }
+
+    &__company-list-item-edit-consignee-btn {
+        display: grid;
+        grid-template-columns: repeat(2,max-content);
+        gap: 11px;
+        max-width: 165px;
+        font-weight: 600;
+font-size: 16px;
+line-height: 18px;
+    }
+
+    &__consignee-lists-wrapper,
+    &__address-lists-wrapper {
+        display: grid;
+        gap: 16px;
+        max-height: 640px;
+        overflow: auto;
+        scrollbar-width: none;
+
+        @include media-extra-large() {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
+
+    &__consignee-lists-wrapper::-webkit-scrollbar,
+    &__address-lists-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+}
