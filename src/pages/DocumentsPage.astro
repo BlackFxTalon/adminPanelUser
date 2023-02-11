@@ -15,7 +15,7 @@ import AddPassportFolderAltPopup from "../components/documentsPage/AddPassportFo
 import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentFlowAddFolderAltPopup.astro";
 ---
 <Layout title="страница Документы">
-  <section class="site-section documents-page__site-section" x-data="{table: 1, searchBtnDropdown: false, editActionsAltPopup: false, addPassportFolderAltPopup: false, documentFlowAddFolderAltPopup: false }">
+  <section class="site-section documents-page__site-section" x-data="{table: 1, searchBtnDropdown: false, editActionsAltPopup: false, addPassportFolderAltPopup: false, documentFlowAddFolderAltPopup: false, togglePassportUploadBlock: false }">
     <TableTabs></TableTabs>
     <div class="site-section__tab-wrapper" x-show="table === 1" x-data="{toggleView: 'tableList'}">
     <div class="site-section__top-row documents-page__top-row desktop-hide">
@@ -61,7 +61,7 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
                 <path d="M19.2055 14.7771C20.2119 14.7771 21.177 14.3878 21.8886 13.6948C22.6002 13.0019 23 12.0621 23 11.0821C23 10.1021 22.6002 9.16227 21.8886 8.46932C21.177 7.77637 20.2119 7.38708 19.2055 7.38708H18.1213C18.2795 6.70082 18.2819 5.99397 18.1284 5.30689C17.9749 4.61982 17.6685 3.96597 17.2267 3.38267C16.7848 2.79938 16.2162 2.29807 15.5533 1.90737C14.8904 1.51666 14.1462 1.24421 13.3631 1.10557C12.5801 0.966933 11.7736 0.964821 10.9896 1.09936C10.2056 1.23389 9.45954 1.50244 8.79399 1.88967C7.44984 2.67171 6.51522 3.88968 6.19574 5.27565C5.03999 5.23057 3.90335 5.56111 2.98045 6.21069C2.05755 6.86027 1.40579 7.78848 1.13676 8.83639C0.867724 9.8843 0.998157 10.9867 1.50572 11.9549C2.01329 12.9231 2.86641 13.6969 3.91903 14.1437M11.6165 9.49856V19M11.6165 19L8.36402 15.8329M11.6165 19L14.8689 15.8329" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>                
         </button>
-        <button type="button" class="documents-page__delete-trash-btn">
+        <!-- <button type="button" class="documents-page__delete-trash-btn">
             <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.7998 5.44444H19.5776M8.46647 9.88889V16.5556M12.9109 9.88889V16.5556M2.91092 5.44444L4.02203 18.7778C4.02203 19.3671 4.25615 19.9324 4.6729 20.3491C5.08965 20.7659 5.65488 21 6.24425 21H15.1331C15.7225 21 16.2877 20.7659 16.7045 20.3491C17.1212 19.9324 17.3554 19.3671 17.3554 18.7778L18.4665 5.44444M7.35536 5.44444V2.11111C7.35536 1.81643 7.47242 1.53381 7.6808 1.32544C7.88917 1.11706 8.17179 1 8.46647 1H12.9109C13.2056 1 13.4882 1.11706 13.6966 1.32544C13.905 1.53381 14.022 1.81643 14.022 2.11111V5.44444" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>                              
@@ -75,7 +75,7 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
             <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.8669 1V5.44444C11.8669 5.73913 11.9792 6.02174 12.1793 6.23012C12.3793 6.43849 12.6506 6.55556 12.9335 6.55556H17.2002M11.8669 1H7.6002C7.0344 1 6.49178 1.23413 6.0917 1.65087C5.69162 2.06762 5.46686 2.63285 5.46686 3.22222V14.3333C5.46686 14.9227 5.69162 15.4879 6.0917 15.9047C6.49178 16.3214 7.0344 16.5556 7.6002 16.5556H15.0669C15.6327 16.5556 16.1753 16.3214 16.5754 15.9047C16.9754 15.4879 17.2002 14.9227 17.2002 14.3333V6.55556M11.8669 1L17.2002 6.55556M12.9335 16.5556V18.7778C12.9335 19.3671 12.7088 19.9324 12.3087 20.3491C11.9086 20.7659 11.366 21 10.8002 21H3.33353C2.76773 21 2.22511 20.7659 1.82503 20.3491C1.42496 19.9324 1.2002 19.3671 1.2002 18.7778V7.66667C1.2002 7.0773 1.42496 6.51207 1.82503 6.09532C2.22511 5.67857 2.76773 5.44444 3.33353 5.44444H5.46686" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>                
-        </button>
+        </button> -->
         <button type="button" class="documents-page__layout-btn" x-show="toggleView === 'tableList'" x-on:click="toggleView = 'layout'">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.125 3.25C2.74632 3.25 3.25 2.74632 3.25 2.125C3.25 1.50368 2.74632 1 2.125 1C1.50368 1 1 1.50368 1 2.125C1 2.74632 1.50368 3.25 2.125 3.25Z" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -159,7 +159,7 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
                 </svg>  
                 Скачать              
         </button>
-        <button type="button" class="documents-page__edit-btn" x-on:click="editActionsAltPopup = true">
+        <!-- <button type="button" class="documents-page__edit-btn" x-on:click="editActionsAltPopup = true">
             <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.5158 2.90847L15.6911 7.08372M1.59961 17H5.77486L16.7349 6.03997C17.2886 5.4863 17.5996 4.73536 17.5996 3.95235C17.5996 3.16934 17.2886 2.4184 16.7349 1.86472C16.1812 1.31105 15.4303 1 14.6473 1C13.8643 1 13.1133 1.31105 12.5596 1.86472L1.59961 12.8248V17Z" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
@@ -170,7 +170,7 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
                 <path d="M11.8669 1V5.44444C11.8669 5.73913 11.9792 6.02174 12.1793 6.23012C12.3793 6.43849 12.6506 6.55556 12.9335 6.55556H17.2002M11.8669 1H7.6002C7.0344 1 6.49178 1.23413 6.0917 1.65087C5.69162 2.06762 5.46686 2.63285 5.46686 3.22222V14.3333C5.46686 14.9227 5.69162 15.4879 6.0917 15.9047C6.49178 16.3214 7.0344 16.5556 7.6002 16.5556H15.0669C15.6327 16.5556 16.1753 16.3214 16.5754 15.9047C16.9754 15.4879 17.2002 14.9227 17.2002 14.3333V6.55556M11.8669 1L17.2002 6.55556M12.9335 16.5556V18.7778C12.9335 19.3671 12.7088 19.9324 12.3087 20.3491C11.9086 20.7659 11.366 21 10.8002 21H3.33353C2.76773 21 2.22511 20.7659 1.82503 20.3491C1.42496 19.9324 1.2002 19.3671 1.2002 18.7778V7.66667C1.2002 7.0773 1.42496 6.51207 1.82503 6.09532C2.22511 5.67857 2.76773 5.44444 3.33353 5.44444H5.46686" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>  
                 Копировать              
-        </button>
+        </button> -->
       </div>
       <DocumentFlowCardsList></DocumentFlowCardsList>
       <ul role="list" class="pagination documents-page__pagination">
@@ -240,7 +240,7 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
     </div>
     </div>
     </div>
-    <div class="site-section__tab-wrapper" x-show="table === 2" x-data="{toggleView: 'tableList', files: [] }">
+    <div class="site-section__tab-wrapper" x-show="table === 2" x-data="{toggleView: '' }">
         <div class="site-section__top-row documents-page__top-row desktop-hide">
             <!-- <button type="button" class="site-section__top-row-settings-btn documents-page__top-row-settings-btn" x-on:click="">
                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -284,13 +284,13 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
               <Filter></Filter>
             </div>    
           </div>
-          <div class="documents-page__body-btn-controls-group desktop-hide" x-bind:class="{'disabled': files.length === 0 }">
+          <div class="documents-page__body-btn-controls-group desktop-hide" x-bind:class="{'disabled': togglePassportUploadBlock === false }">
             <button type="button" class="documents-page__cloud-download-btn">
                 <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.2055 14.7771C20.2119 14.7771 21.177 14.3878 21.8886 13.6948C22.6002 13.0019 23 12.0621 23 11.0821C23 10.1021 22.6002 9.16227 21.8886 8.46932C21.177 7.77637 20.2119 7.38708 19.2055 7.38708H18.1213C18.2795 6.70082 18.2819 5.99397 18.1284 5.30689C17.9749 4.61982 17.6685 3.96597 17.2267 3.38267C16.7848 2.79938 16.2162 2.29807 15.5533 1.90737C14.8904 1.51666 14.1462 1.24421 13.3631 1.10557C12.5801 0.966933 11.7736 0.964821 10.9896 1.09936C10.2056 1.23389 9.45954 1.50244 8.79399 1.88967C7.44984 2.67171 6.51522 3.88968 6.19574 5.27565C5.03999 5.23057 3.90335 5.56111 2.98045 6.21069C2.05755 6.86027 1.40579 7.78848 1.13676 8.83639C0.867724 9.8843 0.998157 10.9867 1.50572 11.9549C2.01329 12.9231 2.86641 13.6969 3.91903 14.1437M11.6165 9.49856V19M11.6165 19L8.36402 15.8329M11.6165 19L14.8689 15.8329" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>                
             </button>
-            <button type="button" class="documents-page__delete-trash-btn">
+            <!-- <button type="button" class="documents-page__delete-trash-btn">
                 <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.7998 5.44444H19.5776M8.46647 9.88889V16.5556M12.9109 9.88889V16.5556M2.91092 5.44444L4.02203 18.7778C4.02203 19.3671 4.25615 19.9324 4.6729 20.3491C5.08965 20.7659 5.65488 21 6.24425 21H15.1331C15.7225 21 16.2877 20.7659 16.7045 20.3491C17.1212 19.9324 17.3554 19.3671 17.3554 18.7778L18.4665 5.44444M7.35536 5.44444V2.11111C7.35536 1.81643 7.47242 1.53381 7.6808 1.32544C7.88917 1.11706 8.17179 1 8.46647 1H12.9109C13.2056 1 13.4882 1.11706 13.6966 1.32544C13.905 1.53381 14.022 1.81643 14.022 2.11111V5.44444" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>                              
@@ -304,7 +304,7 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
                 <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.8669 1V5.44444C11.8669 5.73913 11.9792 6.02174 12.1793 6.23012C12.3793 6.43849 12.6506 6.55556 12.9335 6.55556H17.2002M11.8669 1H7.6002C7.0344 1 6.49178 1.23413 6.0917 1.65087C5.69162 2.06762 5.46686 2.63285 5.46686 3.22222V14.3333C5.46686 14.9227 5.69162 15.4879 6.0917 15.9047C6.49178 16.3214 7.0344 16.5556 7.6002 16.5556H15.0669C15.6327 16.5556 16.1753 16.3214 16.5754 15.9047C16.9754 15.4879 17.2002 14.9227 17.2002 14.3333V6.55556M11.8669 1L17.2002 6.55556M12.9335 16.5556V18.7778C12.9335 19.3671 12.7088 19.9324 12.3087 20.3491C11.9086 20.7659 11.366 21 10.8002 21H3.33353C2.76773 21 2.22511 20.7659 1.82503 20.3491C1.42496 19.9324 1.2002 19.3671 1.2002 18.7778V7.66667C1.2002 7.0773 1.42496 6.51207 1.82503 6.09532C2.22511 5.67857 2.76773 5.44444 3.33353 5.44444H5.46686" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>                
-            </button>
+            </button> -->
             <button type="button" class="documents-page__layout-btn" x-show="toggleView === 'tableList'" x-on:click="toggleView = 'layout'">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.125 3.25C2.74632 3.25 3.25 2.74632 3.25 2.125C3.25 1.50368 2.74632 1 2.125 1C1.50368 1 1 1.50368 1 2.125C1 2.74632 1.50368 3.25 2.125 3.25Z" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -402,13 +402,12 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
               </div>
           </div>
           <DocumentFlowTablePassport></DocumentFlowTablePassport>
-          <div class="documents-page__upload-file-zone" x-show="files.length === 0">
-            <input type="file" multiple="" x-on:change="files = $el.files; toggleView = 'tableList'" multiple class="documents-page__upload-file-zone-input">
+          <div class="documents-page__upload-file-zone" x-show="togglePassportUploadBlock === false" x-on:click="togglePassportUploadBlock = true; toggleView = 'tableList'">
             <svg class="documents-page__upload-file-zone-icon" width="63" height="78" viewBox="0 0 63 78" fill="none" xmlns="http://www.w3.org/2000/svg">
              <path d="M39.833 1.5V18.1667C39.833 19.2717 40.272 20.3315 41.0534 21.1129C41.8348 21.8943 42.8946 22.3333 43.9997 22.3333H60.6663M39.833 1.5H10.6663C8.4562 1.5 6.33659 2.37797 4.77378 3.94078C3.21098 5.50358 2.33301 7.6232 2.33301 9.83333V68.1667C2.33301 70.3768 3.21098 72.4964 4.77378 74.0592C6.33659 75.622 8.4562 76.5 10.6663 76.5H52.333C54.5431 76.5 56.6628 75.622 58.2256 74.0592C59.7884 72.4964 60.6663 70.3768 60.6663 68.1667V22.3333M39.833 1.5L60.6663 22.3333" stroke="#859AB9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
              </svg>
-             <p class="documents-page__upload-file-zone-text">Загрузить файлы</p>
-             <p class="documents-page__upload-file-zone-text-2">Перетащить с помощью Drag and Drop</p>              
+             <p class="documents-page__upload-file-zone-text">Паспортов нет</p>
+             <p class="documents-page__upload-file-zone-text-2">На данный момент вы не совершали покупок, чтобы получить паспорт заказа</p>              
          </div>
         <div class="documents-page__view-layout-grid desktop-hide" x-data="{toggleCardInfoView: ''}">
           <DocumentFlowCardsListPassport></DocumentFlowCardsListPassport>
@@ -416,7 +415,7 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
             <Pagination></Pagination>
           </ul>
         </div>
-        <div class="documents-page__view-layout-grid mobile-hide" x-data="{toggleCardInfoView: ''}" x-show="toggleView === 'layout' && files.length > 0">
+        <div class="documents-page__view-layout-grid mobile-hide" x-data="{toggleCardInfoView: ''}" x-show="toggleView === 'layout'">
           <div class="documents-page__view-layout-grid-left">
             <div class="documents-page__body-btn-controls-group">
               <button type="button" class="documents-page__cloud-download-btn">
@@ -425,7 +424,7 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
                       </svg>  
                       Скачать              
               </button>
-              <button type="button" class="documents-page__delete-trash-btn">
+              <!-- <button type="button" class="documents-page__delete-trash-btn">
                   <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M1.7998 5.44444H19.5776M8.46647 9.88889V16.5556M12.9109 9.88889V16.5556M2.91092 5.44444L4.02203 18.7778C4.02203 19.3671 4.25615 19.9324 4.6729 20.3491C5.08965 20.7659 5.65488 21 6.24425 21H15.1331C15.7225 21 16.2877 20.7659 16.7045 20.3491C17.1212 19.9324 17.3554 19.3671 17.3554 18.7778L18.4665 5.44444M7.35536 5.44444V2.11111C7.35536 1.81643 7.47242 1.53381 7.6808 1.32544C7.88917 1.11706 8.17179 1 8.46647 1H12.9109C13.2056 1 13.4882 1.11706 13.6966 1.32544C13.905 1.53381 14.022 1.81643 14.022 2.11111V5.44444" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                       </svg> 
@@ -442,10 +441,10 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
                       <path d="M11.8669 1V5.44444C11.8669 5.73913 11.9792 6.02174 12.1793 6.23012C12.3793 6.43849 12.6506 6.55556 12.9335 6.55556H17.2002M11.8669 1H7.6002C7.0344 1 6.49178 1.23413 6.0917 1.65087C5.69162 2.06762 5.46686 2.63285 5.46686 3.22222V14.3333C5.46686 14.9227 5.69162 15.4879 6.0917 15.9047C6.49178 16.3214 7.0344 16.5556 7.6002 16.5556H15.0669C15.6327 16.5556 16.1753 16.3214 16.5754 15.9047C16.9754 15.4879 17.2002 14.9227 17.2002 14.3333V6.55556M11.8669 1L17.2002 6.55556M12.9335 16.5556V18.7778C12.9335 19.3671 12.7088 19.9324 12.3087 20.3491C11.9086 20.7659 11.366 21 10.8002 21H3.33353C2.76773 21 2.22511 20.7659 1.82503 20.3491C1.42496 19.9324 1.2002 19.3671 1.2002 18.7778V7.66667C1.2002 7.0773 1.42496 6.51207 1.82503 6.09532C2.22511 5.67857 2.76773 5.44444 3.33353 5.44444H5.46686" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                       </svg>  
                       Копировать              
-              </button>
+              </button> -->
             </div>
             <DocumentFlowCardsListPassport></DocumentFlowCardsListPassport>
-            <ul role="list" class="pagination documents-page__pagination" x-show="files.length > 0">
+            <ul role="list" class="pagination documents-page__pagination" x-show="togglePassportUploadBlock === true">
               <Pagination></Pagination>
             </ul>
           </div>
@@ -458,11 +457,11 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
                   Здесь показывается детальная информация о выбранном файле или папке
                 </p>              
             </div>
-            <template x-for="(file,index) in files" :key="file.name">
-              <figure class="documents-page__document-flow-card-aside-figure" x-show="toggleCardInfoView === index">
+            <template x-for="i in 6">
+              <figure class="documents-page__document-flow-card-aside-figure" x-show="toggleCardInfoView === i">
                 <div class="documents-page__document-flow-card-aside-figure-top">
                   <img class="documents-page__document-flow-card-aside-img" src="/images/document-flow-cards-img.png" alt="footer avatar" width="210" height="180" loading="lazy" decoding="async">
-                  <p class="documents-page__document-flow-card-aside-title" x-text="file.name">
+                  <p class="documents-page__document-flow-card-aside-title">
                     редуктор цилиндрический
                   </p>
                   <button type="button" class="btn btn--primary documents-page__document-flow-card-aside-view-btn">
@@ -477,11 +476,11 @@ import DocumentFlowAddFolderAltPopup from "../components/documentsPage/DocumentF
                     <li class="documents-page__document-flow-card-aside-list-item">
                        <div class="documents-page__document-flow-card-aside-list-item-top">
                         <p class="documents-page__document-flow-card-aside-list-item-title">Размер:</p>
-                        <p class="documents-page__document-flow-card-aside-list-item-info"><span x-text="file.size"></span> КБ</p>
+                        <p class="documents-page__document-flow-card-aside-list-item-info"><span>19,06</span> КБ</p>
                        </div>
                        <div class="documents-page__document-flow-card-aside-list-item-bottom">
                         <p class="documents-page__document-flow-card-aside-list-item-title">Тип файла:</p>
-                        <p class="documents-page__document-flow-card-aside-list-item-info" x-text="file.type">png</p>
+                        <p class="documents-page__document-flow-card-aside-list-item-info">png</p>
                        </div>
                     </li>
                     <li class="documents-page__document-flow-card-aside-list-item">

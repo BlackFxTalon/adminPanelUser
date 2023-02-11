@@ -145,12 +145,14 @@ color: var(--dark);
         gap: 12px;
         grid-gap: 12px;
         position: relative;
+        cursor: pointer;
     }
 
     &__radio-list-item-input {
         width: 24px;
         height: 24px;
         opacity: 0;
+        cursor: pointer;
     }
 
     &__radio-list-item-input:checked + .calculate-delivery-alt-popup__radio-list-item-label::before {
@@ -166,6 +168,7 @@ color: var(--dark);
 font-size: 16px;
 line-height: 18px;
 color: var(--dark-grey);
+cursor: pointer;
     }
 
     &__radio-list-item-label::before,

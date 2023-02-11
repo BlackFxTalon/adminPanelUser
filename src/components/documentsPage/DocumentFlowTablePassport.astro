@@ -1,4 +1,4 @@
-<div class="site-section__table-wrapper document-flow-table__table-wrapper" x-show="toggleView === 'tableList' && files.length > 0">
+<div class="site-section__table-wrapper document-flow-table__table-wrapper" x-show="toggleView === 'tableList'">
     <nav class="site-section__table document-flow-table__table">
       <ul role="list" class="site-section__table-list site-section__table-caption-list document-flow-table__table-list document-flow-table__table-caption-list">
         <li class="site-section__table-list-item site-section__table-caption-list-item document-flow-table__table-list-item document-flow-table__table-list-caption-item mobile-hide">
@@ -27,7 +27,7 @@
             Ответственный
         </li>
       </ul>
-      <template x-for="file in files" :key="file.name">
+      <template x-for="i in 6">
       <ul role="list" class="site-section__table-list document-flow-table__table-list">
         <li class="site-section__table-list-item site-section__table-caption-list-item document-flow-table__table-list-item document-flow-table__table-list-caption-item mobile-hide" x-data="{toggleDropdown: false}" x-on:click.outside="toggleDropdown = false">
           <button type="button" class="document-flow-table__menu-btn" x-on:click="toggleDropdown = !toggleDropdown">
@@ -43,7 +43,7 @@
                   </svg>    
                   Скачать              
               </li>
-              <li class="document-flow-table__menu-btn-dropdown-list-item" x-on:click="toggleDropdown = false">
+              <!-- <li class="document-flow-table__menu-btn-dropdown-list-item" x-on:click="toggleDropdown = false">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1.66699 3.66667H12.3337M5.66699 6.33333V10.3333M8.33366 6.33333V10.3333M2.33366 3.66667L3.00033 11.6667C3.00033 12.0203 3.1408 12.3594 3.39085 12.6095C3.6409 12.8595 3.98004 13 4.33366 13H9.66699C10.0206 13 10.3598 12.8595 10.6098 12.6095C10.8598 12.3594 11.0003 12.0203 11.0003 11.6667L11.667 3.66667M5.00033 3.66667V1.66667C5.00033 1.48986 5.07056 1.32029 5.19559 1.19526C5.32061 1.07024 5.49018 1 5.66699 1H8.33366C8.51047 1 8.68004 1.07024 8.80506 1.19526C8.93009 1.32029 9.00033 1.48986 9.00033 1.66667V3.66667" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>                     
@@ -66,11 +66,12 @@
                   <path d="M7.99967 1V3.66667C7.99967 3.84348 8.06991 4.01305 8.19494 4.13807C8.31996 4.2631 8.48953 4.33333 8.66634 4.33333H11.333M7.99967 1H5.33301C4.97939 1 4.64025 1.14048 4.3902 1.39052C4.14015 1.64057 3.99967 1.97971 3.99967 2.33333V9C3.99967 9.35362 4.14015 9.69276 4.3902 9.94281C4.64025 10.1929 4.97939 10.3333 5.33301 10.3333H9.99967C10.3533 10.3333 10.6924 10.1929 10.9425 9.94281C11.1925 9.69276 11.333 9.35362 11.333 9V4.33333M7.99967 1L11.333 4.33333M8.66634 10.3333V11.6667C8.66634 12.0203 8.52587 12.3594 8.27582 12.6095C8.02577 12.8595 7.68663 13 7.33301 13H2.66634C2.31272 13 1.97358 12.8595 1.72353 12.6095C1.47348 12.3594 1.33301 12.0203 1.33301 11.6667V5C1.33301 4.64638 1.47348 4.30724 1.72353 4.05719C1.97358 3.80714 2.31272 3.66667 2.66634 3.66667H3.99967" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>                  
                   Копировать              
-              </li>
+              </li> -->
             </ul>
           </div>
       </li>
-        <li class="site-section__table-list-item document-flow-table__table-list-item" x-text="file.name">
+        <li class="site-section__table-list-item document-flow-table__table-list-item">
+          Редуктор цилиндрический
         </li>
         <li class="site-section__table-list-item document-flow-table__table-list-item">
             <time datetime="12 окт 2022" class="document-flow-table__datetime">12 окт 2022</time>

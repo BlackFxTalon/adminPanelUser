@@ -47,43 +47,21 @@ x-data={`{url: '${Astro.url.pathname}'}`}
             </a>
             <span class="aside-nav-menu__indicator-new blinking"></span>
         </li>
-        <li class="aside-nav-menu__list-item" x-bind:class="{'active': toggleSubMenu === true || url === '/DocumentsPage.html' || url === '/DocumentsPage'}" x-data="{toggleSubMenu: false}">
-            <a class="aside-nav-menu__list-link" x-on:click="toggleSubMenu = !toggleSubMenu">
-                <svg class="aside-nav-menu__list-icon" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg" x-bind:class="{'active': toggleSubMenu === true || url === '/DocumentsPage.html' || url === '/DocumentsPage'}">
+        <li class="aside-nav-menu__list-item" x-bind:class="{'active': url === '/DocumentsPage.html' || url === '/DocumentsPage'}">
+            <a href="/DocumentsPage" class="aside-nav-menu__list-link">
+                <svg class="aside-nav-menu__list-icon" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg" x-bind:class="{'active': url === '/DocumentsPage.html' || url === '/DocumentsPage'}">
                     <path d="M10 1V5C10 5.26522 10.1054 5.51957 10.2929 5.70711C10.4804 5.89464 10.7348 6 11 6H15M10 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3V17C1 17.5304 1.21071 18.0391 1.58579 18.4142C1.96086 18.7893 2.46957 19 3 19H13C13.5304 19 14.0391 18.7893 14.4142 18.4142C14.7893 18.0391 15 17.5304 15 17V6M10 1L15 6M5 7H6M5 11H11M5 15H11" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                 
-                    <span class="aside-nav-menu__list-item-title" x-bind:class="{'active': toggleSubMenu === true || url === '/DocumentsPage.html' || url === '/DocumentsPage'}">Документы</span>          
+                    </svg>
+                    <span class="aside-nav-menu__list-item-title" x-bind:class="{'active': url === '/DocumentsPage.html' || url === '/DocumentsPage'}">Документы</span>          
             </a>
-            <ul role="list" x-bind:class="{'active': toggleSubMenu === true }" class="aside-nav-menu__sublist" x-show="toggleSubMenu === true" x-collapse.duration.750ms>
-                <li class="aside-nav-menu__sublist-item">
-                    <a href="/DocumentsPage" class="aside-nav-menu__sublist-item-link">Документы</a>
-                </li>
-                <li class="aside-nav-menu__sublist-item">
-                    <a href="/DocumentsPage" class="aside-nav-menu__sublist-item-link">Документы</a>
-                </li>
-            </ul>
-            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="aside-nav-menu__list-item-submenu-arrow" x-bind:class="{'active': toggleSubMenu === true}">
-                <path d="M5 1L1 5L5 9" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>                    
         </li>
-        <li class="aside-nav-menu__list-item" x-bind:class="{'active': toggleSubMenu === true || url === '/companyData.html' || url === '/companyData'}" x-data="{toggleSubMenu: false}">
-            <a class="aside-nav-menu__list-link" x-on:click="toggleSubMenu = !toggleSubMenu">
-                <svg class="aside-nav-menu__list-icon" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg" x-bind:class="{'active': toggleSubMenu === true || url === '/companyData.html' || url === '/companyData'}">
-                    <path d="M10 1V5C10 5.26522 10.1054 5.51957 10.2929 5.70711C10.4804 5.89464 10.7348 6 11 6H15M10 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3V17C1 17.5304 1.21071 18.0391 1.58579 18.4142C1.96086 18.7893 2.46957 19 3 19H13C13.5304 19 14.0391 18.7893 14.4142 18.4142C14.7893 18.0391 15 17.5304 15 17V6M10 1L15 6M5 7H6M5 11H11M5 15H11" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                 
-                    <span class="aside-nav-menu__list-item-title" x-bind:class="{'active': toggleSubMenu === true || url === '/companyData.html' || url === '/companyData'}">Компания</span>          
+        <li class="aside-nav-menu__list-item" x-bind:class="{'active': url === '/companyData.html' || url === '/companyData'}">
+            <a href="/companyData" class="aside-nav-menu__list-link">
+                <svg class="aside-nav-menu__list-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" x-bind:class="{'active': url === '/companyData.html' || url === '/companyData'}">
+                    <path d="M1 19H19M7 6H8M7 10H8M7 14H8M12 6H13M12 10H13M12 14H13M3 19V3C3 2.46957 3.21071 1.96086 3.58579 1.58579C3.96086 1.21071 4.46957 1 5 1H15C15.5304 1 16.0391 1.21071 16.4142 1.58579C16.7893 1.96086 17 2.46957 17 3V19" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="aside-nav-menu__list-item-title" x-bind:class="{'active': url === '/companyData.html' || url === '/companyData'}">Компания</span>          
             </a>
-            <ul role="list" x-bind:class="{'active': toggleSubMenu === true }" class="aside-nav-menu__sublist" x-show="toggleSubMenu === true" x-collapse.duration.750ms>
-                <li class="aside-nav-menu__sublist-item">
-                    <a href="/companyData" class="aside-nav-menu__sublist-item-link">Компания</a>
-                </li>
-                <li class="aside-nav-menu__sublist-item">
-                    <a href="/companyData" class="aside-nav-menu__sublist-item-link">Компания</a>
-                </li>
-            </ul>
-            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="aside-nav-menu__list-item-submenu-arrow" x-bind:class="{'active': toggleSubMenu === true}">
-                <path d="M5 1L1 5L5 9" stroke="#859AB9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>                    
         </li>
         <li class="aside-nav-menu__list-item" x-bind:class="{'active': url === '/favoritesPage.html' || url === '/favoritesPage'}">
             <a href="/favoritesPage" class="aside-nav-menu__list-link">
